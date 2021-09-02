@@ -1,4 +1,5 @@
-
+#if your Os is mac
+brew install yarn
 
 ## Setup
 
