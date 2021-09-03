@@ -34,7 +34,7 @@
                             label="确认密码"
                             v-model="confirmPassword"
                             :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
-                            type="password"
+                            :type="showPassword ? 'text' : 'password'"
                             required
                             prepend-icon="mdi-lock-check"
                             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -108,7 +108,7 @@
         //         showPassword: false
         //     })
         // },lkdsajlkjdsaflkjdsaklfjdaslkfjlsadfjlk
-        data: () => (
+        data() { return (
             {
                 agreeToTerms: false,
                 agreeToTermsRules: [
@@ -133,8 +133,8 @@
                 //     '密码需要大于8位'
                 // ],
                 // confirmPasswordRules: [v => !!v || "密码不一致"],
-                passwordRules: [v => !!v || "Password is required"],
-                confirmPasswordRules: [v => !!v || "Password is required"],
+                passwordRules: [v => !!v || "请输入密码"],
+                confirmPasswordRules: [v => !!v || "请输入验证密码"],
 
                 identities: ['学生', '教师', '管理用户'],
                 identityRules: [
@@ -158,11 +158,13 @@
                 ],
                 formValidity: false,
                 showPassword: true,
-            }),
+            }
+            )
+        },
         computed: {
             passwordConfirmationRule() {
                 return () =>
-                    this.password === this.confirmPassword || "Password must match";
+                    this.password === this.confirmPassword || "密码不一致";
             }
         },
         methods: {

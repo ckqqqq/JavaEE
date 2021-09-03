@@ -1,5 +1,5 @@
 <template>
-  <v-timeline align-top :dense="true">
+  <v-timeline align-top :dense=true>
     <v-timeline-item
       v-for="(item, i) in timeline"
       :key="i"

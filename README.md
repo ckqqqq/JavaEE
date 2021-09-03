@@ -2,6 +2,8 @@
 ```
 brew install yarn
 ```
+nym install yarn --global
+
 
 ## Setup
 
