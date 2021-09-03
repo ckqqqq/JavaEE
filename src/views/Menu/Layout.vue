@@ -4,8 +4,8 @@
 <!--下面的参数总是有问题！！！！！！！！！！-->
         <v-navigation-drawer
                 v-model="drawer"
-                expand-on-hover='true'
-                absolute='true'
+                :expand-on-hover="true"
+                :absolute="true"
         >
 <!--            颜色               -->
             <v-sheet
@@ -15,12 +15,12 @@
 <!--                head portrait      -->
 <!--                自带省略号  -->
                 <v-list>
-                    <v-list-item class="px-2">
-                        <v-list-item-avatar>
-                            <v-img src="https://randomuser.me/api/portraits/men/11.jpg"></v-img>
-                        </v-list-item-avatar>
-                    </v-list-item>
-
+<!--                    <v-list-item class="px-2">-->
+<!--                        <v-list-item-avatar>-->
+<!--                            <v-img src="https://randomuser.me/api/portraits/men/11.jpg"></v-img>-->
+<!--                        </v-list-item-avatar>-->
+<!--                    </v-list-item>-->
+                    <v-btn type="primary" @click="putin">hello!</v-btn>
                     <v-list-item
                             link
 
@@ -113,5 +113,7 @@
                 ['mdi-alert-octagon', '更多'],
             ],
         }),
-    }
+    };
+    // methods:{
+    // }
 </script>
