@@ -1,11 +1,11 @@
 <template>
     <v-app id="layout">
 <!--侧边栏        <>-->
-
+<!--下面的参数总是有问题！！！！！！！！！！-->
         <v-navigation-drawer
                 v-model="drawer"
-                expand-on-hover="true"
-                absolute="true"
+                expand-on-hover='true'
+                absolute='true'
         >
 <!--            颜色               -->
             <v-sheet
@@ -13,18 +13,34 @@
                     class="pa-4"
             >
 <!--                head portrait      -->
-                <v-avatar
-                        class="mb-4"
-                        color="grey darken-1"
-                        size="64"
-                ></v-avatar>
+<!--                自带省略号  -->
+                <v-list>
+                    <v-list-item class="px-2">
+                        <v-list-item-avatar>
+                            <v-img src="https://randomuser.me/api/portraits/men/11.jpg"></v-img>
+                        </v-list-item-avatar>
+                    </v-list-item>
 
-                <div>john</div>
+                    <v-list-item
+                            link
+
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title class="text-h6">
+                                杨正球
+                            </v-list-item-title>
+                            <v-list-item-subtitle>ckqqqq@bupt.edu.cn</v-list-item-subtitle>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
             </v-sheet>
 
             <v-divider></v-divider>
 
-            <v-list>
+            <v-list
+                nav
+
+            >
                 <v-list-item
                         v-for="[icon, text] in links"
                         :key="icon"
@@ -91,10 +107,10 @@
             cards: ['Today', 'Yesterday'],
             drawer: null,
             links: [
-                ['mdi-inbox-arrow-down', 'Inbox'],
-                ['mdi-send', 'Send'],
-                ['mdi-delete', 'Trash'],
-                ['mdi-alert-octagon', 'Spam'],
+                ['mdi-inbox-arrow-down', '分数查询'],
+                ['mdi-send', '模拟志愿'],
+                ['mdi-delete', '提前估分'],
+                ['mdi-alert-octagon', '更多'],
             ],
         }),
     }
