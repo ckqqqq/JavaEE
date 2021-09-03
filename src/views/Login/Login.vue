@@ -63,6 +63,7 @@ export default {
 		}
 	}
 }
+localStorage.setItem("userName","abc");
 </script>
 
 <style></style>

@@ -33,29 +33,6 @@
               dark
               padless>
       <v-layout justify-center wrap>
-<!--        <v-btn-->
-
-<!--          v-for="link in links"-->
-<!--          :key="`${link.label}-footer-link`"-->
-<!--          color="white"-->
-<!--          text-->
-<!--          rounded-->
-<!--          class="my-2"-->
-<!--          :to="link.url"-->
-<!--        >-->
-<!--          {{ link.label }}-->
-<!--        </v-btn>-->
-<!--&lt;!&ndash;          test  &ndash;&gt;-->
-<!--          <v-btn-->
-<!--                  :key="`${test.label}-footer-link`"-->
-<!--                  color="white"-->
-<!--                  text-->
-<!--                  rounded-->
-<!--                  class="my-2"-->
-<!--                  :to="test.url"-->
-<!--          >-->
-<!--              {{test.label}}-->
-<!--          </v-btn>-->
         <v-flex primary
                 py-4
                 text-center
