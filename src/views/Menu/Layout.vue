@@ -4,7 +4,7 @@
 
         <v-navigation-drawer
                 v-model="drawer"
-
+                expand-on-hover="true"
                 absolute="True"
         >
 <!--            颜色               -->

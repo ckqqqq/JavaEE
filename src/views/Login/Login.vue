@@ -16,6 +16,12 @@
 					:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
 					@click:append="showPassword = !showPassword"
 				/>
+                <v-autocomplete
+                        label="选择你的用户身份"
+                        prepend-icon="mdi-face"
+                        :items="identities"
+
+                ></v-autocomplete>
 			</v-form>
 		</v-card-text>
 <!--        这个是啥？这个是分割线 -->
@@ -46,7 +52,9 @@
 export default {
 	name: 'LoginPage',
 	data() {
-		return {
+		return ({
+
+            identities: ['学生', '教师', '管理用户'],
             register:{
                 //  label
                 label: '注册',
@@ -60,7 +68,8 @@ export default {
                 url: '/Menu/Layout'
             },
 			showPassword: false
-		}
+		})
+
 	}
 }
 </script>
