@@ -23,7 +23,6 @@
                     <v-text-field label="密码"
                                   v-model="password"
                                   :rules="passwordRules"
-                                  type="password"
                                   required
                                   :type="showPassword ? 'text' : 'password'"
                                   prepend-icon="mdi-lock"

@@ -32,7 +32,11 @@
                 {{register.label}}
             </v-btn>
 			<v-spacer></v-spacer>
-			<v-btn color="info">登录</v-btn>
+			<v-btn
+                    color="info"
+                    :to="MenuLink.url"
+            >登录
+            </v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -48,6 +52,12 @@ export default {
                 label: '注册',
                 //  vue link
                 url: '/signup'
+            },
+            MenuLink:{
+                //  label
+                label: '主菜单',
+                //  vue link
+                url: '/Menu/Layout'
             },
 			showPassword: false
 		}
