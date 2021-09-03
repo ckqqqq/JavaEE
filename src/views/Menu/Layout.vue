@@ -5,20 +5,21 @@
         <v-navigation-drawer
                 v-model="drawer"
                 expand-on-hover="true"
-                absolute="True"
+                absolute="true"
         >
 <!--            颜色               -->
             <v-sheet
                     color="grey lighten-4"
                     class="pa-4"
             >
+<!--                head portrait      -->
                 <v-avatar
                         class="mb-4"
                         color="grey darken-1"
                         size="64"
                 ></v-avatar>
 
-                <div>john@vuetifyjs.com</div>
+                <div>john</div>
             </v-sheet>
 
             <v-divider></v-divider>
@@ -39,8 +40,6 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-
-        <v-main>
             <v-container
                     class="py-8 px-6"
                     fluid
@@ -83,7 +82,6 @@
                     </v-col>
                 </v-row>
             </v-container>
-        </v-main>
     </v-app>
 </template>
 

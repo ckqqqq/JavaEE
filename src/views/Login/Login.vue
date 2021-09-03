@@ -46,14 +46,17 @@
 		</v-card-actions>
 	</v-card>
 </template>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
+
 //    动作绑定
 export default {
 	name: 'LoginPage',
 	data() {
-		return ({
 
+		return ({
+            studentid:{},
             identities: ['学生', '教师', '管理用户'],
             register:{
                 //  label
@@ -70,7 +73,30 @@ export default {
 			showPassword: false
 		})
 
-	}
+	},
+    methods:{
+        // getJoke:function() {
+        //     var that=this;
+        //     axios.get("http://127.0.0.1:8080/student/all").then(
+        //
+        //         function(response){
+        //             that.studentid = response.data;
+        //             that.classid = response.data;
+        //
+        //             console.log(response);
+        //         },function(err){}
+        //     )
+        // },
+        // posJoke:function() {
+        //     var that=this;
+        //     axios.post("https://autumnfish.cn/api/user/reg",{studentid:that.studentid})
+        //         .then(function(response){
+        //             console.log(response);
+        //         },function(err){
+        //             console.log(err);
+        //         })
+        // }
+    }
 }
 </script>
 
