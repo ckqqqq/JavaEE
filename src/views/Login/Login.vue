@@ -39,6 +39,7 @@
                 {{register.label}}
             </v-btn>
 			<v-spacer></v-spacer>
+      <v-btn color="warning" :to='this.MenuLink.url'>直接登录</v-btn>
 			<v-btn
                     color="info"
                     @click="this.postLogin"
