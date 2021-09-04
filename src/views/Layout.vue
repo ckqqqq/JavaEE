@@ -6,7 +6,7 @@
         <v-navigation-drawer
                 v-model="drawer"
                 :clipped="$vuetify.breakpoint.lgAndUp"
-               
+
                 app
         >
 <!--            颜色               -->
@@ -69,11 +69,9 @@
         <!--        <div class="about">-->
         <!--            <h1>This is an layout page 23333</h1>-->
         <!--        </div>-->
-        <v-main>
             <v-container fluid>
                 <router-view/>
             </v-container>
-        </v-main>
         <!--        <div>-->
         <!--            <router-view></router-view>-->
         <!--        </div>-->
@@ -82,13 +80,8 @@
 
 <script>
     import $session from '@/service/sessionService'
-    import ScoreEstimation from '@/views/Menu/ScoreEstimation'
-    import  test from '@/components/test'
     export default {
 
-        components:{
-            "v-test":test
-        },
         data() { return (
             {
             cards: ['Today', 'Yesterday'],
@@ -96,9 +89,9 @@
             account_link:{path:'/AccountInformation'},
             menu_links: [
                 {icon:'mdi-inbox-arrow-down', text:'分数查询',path:'/'},
-                {icon:'mdi-inbox-arrow-down', text:'志愿预测',path:'/SchoolPrediction'},
-                {icon:'mdi-delete', text:'提前估分',path:'/ScoreEstimation'},
-                {icon:'mdi-alert-octagon', text:'学校信息',path:'/SchoolInformation'},
+                {icon:'mdi-face', text:'志愿预测',path:'/SchoolPrediction'},
+                {icon:'fa-acorn', text:'提前估分',path:'/ScoreEstimation'},
+                {icon:'mdi-ad', text:'学校信息',path:'/SchoolInformation'},
                 {icon:'mdi-alert-octagon',text: '更多',path:'/DatabaseManagement'},
             ],
         })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-carousel v-model="model" height="90vh">
+    <v-carousel v-model="model" height="90vh" cycle>
       <v-carousel-item
           v-for="(color, i) in colors"
           :key="color"
@@ -62,7 +62,7 @@
           {{ register.label }}
         </v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="warning" :to='this.MenuLink.url'>直接登录</v-btn>
+        <v-btn color="warning" @click='login'>直接登录</v-btn>
         <v-btn
             color="info"
             @click="this.postLogin"
@@ -79,9 +79,11 @@
 
 //    动作绑定
 import axios from "axios";
+import $session from '@/service/sessionService'
+import Layout from '@/views/Layout'
 
 export default {
-  name: 'LoginPage',
+  name: 'Login',
   data() {
     return ({
       studentid: {},
@@ -104,12 +106,6 @@ export default {
         //  vue link
         url: '/signup'
       },
-      MenuLink: {
-        //  label
-        label: '主菜单',
-        //  vue link
-        url: '/Menu/Layout'
-      },
       showPassword: false,
 
       model: 0,
@@ -125,6 +121,13 @@ export default {
   },
   methods: {
     //进行登录，并且将当前用户名以及登录状态存储在localstorage中
+    login() {
+            $session.setCurrentUser({
+                userId: this.userId
+            });
+
+            this.$router.replace('/');
+        },
     postLogin: function () {
       var that = this;
       var url = '';
@@ -159,7 +162,7 @@ export default {
               //触发提示：后期可以删除
               alert("欢迎登陆，用户：" + that.resp.data.data['name']);
               //跳转到指定页面
-              that.$router.push('/Main');
+              that.$router.push('/');
             } else {
               alert("您的用户名或密码输入错误，请检查。");
             }
