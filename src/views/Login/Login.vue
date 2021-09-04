@@ -7,10 +7,11 @@
 		<v-card-text>
 			<v-form>
 <!--                           默认显示-->
-				<v-text-field label="账户" prepend-icon="mdi-account-circle" />
+				<v-text-field label="账户" v-model="account" prepend-icon="mdi-account-circle" />
                 <!--                           mdi-eye-off 隐藏密码-->
 				<v-text-field
 					:type="showPassword ? 'text' : 'password'"
+          v-model="pswd"
 					label="密码"
 					prepend-icon="mdi-lock"
 					:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -20,7 +21,7 @@
                         label="选择你的用户身份"
                         prepend-icon="mdi-face"
                         :items="identities"
-
+                        v-model="identity"
                 ></v-autocomplete>
 			</v-form>
 		</v-card-text>
@@ -38,9 +39,10 @@
                 {{register.label}}
             </v-btn>
 			<v-spacer></v-spacer>
+      <v-btn color="warning" @click="login">直接登录</v-btn>
 			<v-btn
                     color="info"
-                    :to="MenuLink.url"
+                    @click="postLogin"
             >登录
             </v-btn>
 		</v-card-actions>
@@ -51,53 +53,100 @@
 <script>
 
 //    动作绑定
+import axios from "axios";
+import $session from '@/service/sessionService'
+import Layout from '@/views/Layout'
 export default {
-	name: 'LoginPage',
+	name: 'Login',
 	data() {
-
 		return ({
             studentid:{},
             identities: ['学生', '教师', '管理用户'],
+
+      //需要传递的数据
+            account:'',
+            pswd:'',
+            identity:'',
+
+      //存储登录状态
+            isLogin:false,
+
+      //返回的信息请求
+            resp:'',
+
             register:{
                 //  label
                 label: '注册',
                 //  vue link
                 url: '/signup'
             },
-            MenuLink:{
-                //  label
-                label: '主菜单',
-                //  vue link
-                url: '/Menu/Layout'
-            },
 			showPassword: false
 		})
-
 	},
     methods:{
-        // getJoke:function() {
-        //     var that=this;
-        //     axios.get("http://127.0.0.1:8080/student/all").then(
-        //
-        //         function(response){
-        //             that.studentid = response.data;
-        //             that.classid = response.data;
-        //
-        //             console.log(response);
-        //         },function(err){}
-        //     )
-        // },
-        // posJoke:function() {
-        //     var that=this;
-        //     axios.post("https://autumnfish.cn/api/user/reg",{studentid:that.studentid})
-        //         .then(function(response){
-        //             console.log(response);
-        //         },function(err){
-        //             console.log(err);
-        //         })
-        // }
+        //进行登录，并且将当前用户名以及登录状态存储在localstorage中
+        login() {
+            $session.setCurrentUser({
+                userId: this.userId
+            });
+
+            this.$router.replace('/');
+        },
+        postLogin:function() {
+            var that=this;
+            var url = '';
+
+            if (that.identity == '学生'){
+              url = 'http://127.0.0.1:9090/student/login';
+            }else if(that.identity == '教师'){
+              url = 'http://127.0.0.1:9090/teacher/login';
+            }else{
+              //超级用户，等待后端接口
+              url = 'http://127.0.0.1:9090/student/login';
+            }
+            // axios.post("http://127.0.0.1:9090/student/login",{id:'300',password:'ming'})
+          axios({
+            url: url,
+            method: 'post',
+            params: {
+              id: that.account,
+              password: that.pswd
+            }
+          })
+                .then(function(response){
+                  console.log(response.data.data["name"])
+                  if(response.data.msg === "成功") {
+                    that.resp = response;
+                    that.isLogin = true;
+
+                    //存储当前用户的登录状态
+                    localStorage.setItem("userName", that.account);
+                    localStorage.setItem("IsLogin", that.isLogin);
+
+                    //触发提示：后期可以删除
+                    alert("欢迎登陆，用户：" + that.resp.data.data['name']);
+                    //跳转到指定页面
+                    that.$router.push('/');
+                  }else{
+                    alert("您的用户名或密码输入错误，请检查。");
+                  }
+            })
+              .catch(function(err){
+                    alert("您的用户名或密码输入错误，请检查。");
+                })
+        },
+      //获取用户数据
+      mesget:function (){
+          var that =this;
+          axios.get("http://127.0.0.1:9090/student/all")
+        .then(function (response){
+          that.resp = response.data;
+          console.log(that.resp);
+        })
+      }
     }
 }
+
 </script>
 
 <style></style>
