@@ -1,149 +1,386 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <span>DatabaseManageement</span>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-form>
-            <v-row>
-              <v-col cols="4">
-                <v-select
-                    :items="['姓名', 'Email', '账户']"
-                    label="类型"
-                ></v-select>
-              </v-col>
-              <v-col cols="4">
-                <v-text-field
-                    label="查找"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="2">
-                <v-btn color="primary">
-                  查找
-                </v-btn>
-              </v-col>
-            </v-row>
-        </v-form>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-data-table
-            :headers="headers"
-            :items="contacts"
-            :items-per-page="10"
-            dense
-        ></v-data-table>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>
+    <v-container>
+        <v-row>
+            <v-col>
+                <span>本班一本率 （后端传，有时间放个图）</span>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <v-form>
+                    <v-row>
+                        <v-col cols="4">
+                            <v-select
+                                    :items="['姓名', '班级', '账户']"
+                                    label="关键词"
+                            ></v-select>
+                        </v-col>
+                        <v-col cols="4">
+                            <v-text-field
+                                    label="搜索"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col cols="2">
+                            <v-btn color="primary">
+                                搜索
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                </v-form>
+            </v-col>
+        </v-row>
+<!--        -->
+        <v-row>
+            <v-col>
+                <v-data-table
+                        :headers="headers"
+                        :items="desserts"
+                        sort-by="class"
+                        class="elevation-1"
+                >
+                    <template v-slot:top>
+                        <v-toolbar
+                                flat
+                        >
+                            <v-toolbar-title>账户信息</v-toolbar-title>
+                            <v-divider
+                                    class="mx-4"
+                                    inset
+                                    vertical
+                            ></v-divider>
+                            <v-spacer></v-spacer>
+                            <v-dialog
+                                    v-model="dialog"
+                                    max-width="500px"
+                            >
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn
+                                            color="primary"
+                                            dark
+                                            class="mb-2"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                    >
+                                        新建
+                                    </v-btn>
+                                </template>
+                                <v-card>
+                                    <v-card-title>
+                                        <span class="text-h5">{{ formTitle }}</span>
+                                    </v-card-title>
 
+                                    <v-card-text>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col
+                                                        cols="12"
+                                                        sm="6"
+                                                        md="4"
+                                                >
+                                                    <v-text-field
+                                                            v-model="editedItem.Account"
+                                                            label="账户"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col
+                                                        cols="12"
+                                                        sm="6"
+                                                        md="4"
+                                                >
+                                                    <v-text-field
+                                                            v-model="editedItem.password"
+                                                            label="密码"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col
+                                                        cols="12"
+                                                        sm="6"
+                                                        md="4"
+                                                >
+                                                    <v-text-field
+                                                            v-model="editedItem.real_name"
+                                                            label="real_name"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col
+                                                        cols="12"
+                                                        sm="6"
+                                                        md="4"
+                                                >
+                                                    <v-text-field
+                                                            v-model="editedItem.score"
+                                                            label="分数"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col
+                                                        cols="12"
+                                                        sm="6"
+                                                        md="4"
+                                                >
+                                                    <v-text-field
+                                                            v-model="editedItem.class"
+                                                            label="班级"
+                                                    ></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-card-text>
+
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                                color="blue darken-1"
+                                                text
+                                                @click="close"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                                color="blue darken-1"
+                                                text
+                                                @click="save"
+                                        >
+                                            Save
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                            <v-dialog v-model="dialogDelete" max-width="500px">
+                                <v-card>
+                                    <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
+                                        <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+                                        <v-spacer></v-spacer>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                        </v-toolbar>
+                    </template>
+                    <template v-slot:item.actions="{ item }">
+                        <v-icon
+                                small
+                                class="mr-2"
+                                @click="editItem(item)"
+                        >
+                            mdi-pencil
+                        </v-icon>
+                        <v-icon
+                                small
+                                @click="deleteItem(item)"
+                        >
+                            mdi-delete
+                        </v-icon>
+                    </template>
+                    <template v-slot:no-data>
+                        <v-btn
+                                color="primary"
+                                @click="initialize"
+                        >
+                            Reset
+                        </v-btn>
+                    </template>
+                </v-data-table>
+            </v-col>
+        </v-row>
+<!--        -->
+        <v-snackbar
+                v-model="snack"
+                :timeout="3000"
+                :color="snackColor"
+        >
+            {{ snackText }}
+
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                        v-bind="attrs"
+                        text
+                        @click="snack = false"
+                >
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
+<!--          -->
+
+    </v-container>
+</template>
 <script>
-export default {
-  姓名: 'DatabaseManageement',
-  data: () => ({
-    headers: [
-      {
-        text: '姓名',
-        align: 'start',
-        sortable: true,
-        value: '姓名',
-      },
-      { text: '账户', value: '账户' },
-      { text: 'Mobile', value: 'mobile' },
-      { text: 'Email', value: 'email' },
-      { text: '分数', value: '分数' }
-    ],
-    contacts: [
-      {
-        姓名: 'Dallas Daly',
-        账户: 'dallas',
-        mobile: '010-2312-1234',
-        email: 'dallas@home.com',
-        分数: '199 '
-      },
-      {
-        姓名: 'Aniyah Tierney',
-        账户: 'aniyah',
-        mobile: '010-4231-5463',
-        email: 'aniyah@home.com',
-        分数: '198 '
-      },
-      {
-        姓名: 'Darnell Phillips',
-        账户: 'darnell',
-        mobile: '010-8645-9634',
-        email: 'darnell@home.com',
-        分数: '197 '
-      },
-      {
-        姓名: 'Diana Henry',
-        账户: 'diana',
-        mobile: '010-5665-2323',
-        email: 'diana@home.com',
-        分数: '196 '
-      },
-      {
-        姓名: 'Paxton Pennington',
-        账户: 'paxton',
-        mobile: '010-6565-8787',
-        email: 'paxton@home.com',
-        分数: '195 '
-      },
-      {
-        姓名: 'Blanca Ruiz',
-        账户: 'blanca',
-        mobile: '010-1212-3434',
-        email: 'blanca@home.com',
-        分数: '194 '
-      },
-      {
-        姓名: 'Bilal Finch',
-        账户: 'bilal',
-        mobile: '010-7564-3455',
-        email: 'bilal@home.com',
-        分数: '193 '
-      },
-      {
-        姓名: 'Joanna Hoover',
-        账户: 'joanna',
-        mobile: '010-8787-1234',
-        email: 'joanna@home.com',
-        分数: '200 '
-      },
-      {
-        姓名: 'Garrison White',
-        账户: 'garrison',
-        mobile: '010-6789-1234',
-        email: 'garrison@home.com',
-        分数: '2001/01/02'
-      },
-      {
-        姓名: 'Lizbeth Bauer',
-        账户: 'lizbeth',
-        mobile: '010-8970-1524',
-        email: 'lizbeth@home.com',
-        分数: '2001/01/02'
-      },
-      {
-        姓名: 'Kevin McDougall',
-        账户: 'kevin',
-        mobile: '010-2312-3211',
-        email: 'kevin@home.com',
-        分数: '200'
-      },
-      {
-        姓名: 'Carrie Hay',
-        账户: 'carrie',
-        mobile: '010-7675-9898',
-        email: 'carrie@home.com',
-        分数: '200'
-      }
-    ]
-  })
-}
+    export default {
+        name: 'Contacts',
+        data: () => ({
+            dialog: false,
+            dialogDelete: false,
+            headers: [
+                {
+                    text: '账户',
+                    align: 'start',
+                    sortable: false,
+                    value: 'Account',
+                },
+                { text: '密码', value: 'password' },
+                { text: '姓名', value: 'real_name' },
+                { text: '分数', value: 'score' },
+                { text: '班级号', value: 'class' },
+                { text: '修改', value: 'actions', sortable: false },
+            ],
+            desserts: [],
+            editedIndex: -1,
+            editedItem: {
+                Account: '',
+                password: 0,
+                real_name: 0,
+                score: 0,
+                class: 0,
+            },
+            defaultItem: {
+                Account: '',
+                password: 0,
+                real_name: 0,
+                score: 0,
+                class: 0,
+            },
+        }),
+
+        computed: {
+            formTitle () {
+                return this.editedIndex === -1 ? '新建' : '编辑'
+            },
+        },
+
+        watch: {
+            dialog (val) {
+                val || this.close()
+            },
+            dialogDelete (val) {
+                val || this.closeDelete()
+            },
+        },
+
+        created () {
+            this.initialize()
+        },
+
+        methods: {
+
+            initialize () {
+                this.desserts = [
+                    {
+                        Account: 'Frozen Yogurt',
+                        password: 159,
+                        real_name: 6.0,
+                        score: 24,
+                        class: 4.0,
+                    },
+                    {
+                        Account: 'Ice cream sandwich',
+                        password: 237,
+                        real_name: 9.0,
+                        score: 37,
+                        class: 4.3,
+                    },
+                    {
+                        Account: 'Eclair',
+                        password: 262,
+                        real_name: 16.0,
+                        score: 23,
+                        class: 6.0,
+                    },
+                    {
+                        Account: 'Cupcake',
+                        password: 305,
+                        real_name: 3.7,
+                        score: 67,
+                        class: 4.3,
+                    },
+                    {
+                        Account: 'Gingerbread',
+                        password: 356,
+                        real_name: 16.0,
+                        score: 49,
+                        class: 3.9,
+                    },
+                    {
+                        Account: 'Jelly bean',
+                        password: 375,
+                        real_name: 0.0,
+                        score: 94,
+                        class: 0.0,
+                    },
+                    {
+                        Account: 'Lollipop',
+                        password: 392,
+                        real_name: 0.2,
+                        score: 98,
+                        class: 0,
+                    },
+                    {
+                        Account: 'Honeycomb',
+                        password: 408,
+                        real_name: 3.2,
+                        score: 87,
+                        class: 6.5,
+                    },
+                    {
+                        Account: 'Donut',
+                        password: 452,
+                        real_name: 25.0,
+                        score: 51,
+                        class: 4.9,
+                    },
+                    {
+                        Account: 'KitKat',
+                        password: 518,
+                        real_name: 26.0,
+                        score: 65,
+                        class: 7,
+                    },
+                ]
+            },
+
+            editItem (item) {
+                this.editedIndex = this.desserts.indexOf(item)
+                this.editedItem = Object.assign({}, item)
+                this.dialog = true
+            },
+
+            deleteItem (item) {
+                this.editedIndex = this.desserts.indexOf(item)
+                this.editedItem = Object.assign({}, item)
+                this.dialogDelete = true
+            },
+
+            deleteItemConfirm () {
+                this.desserts.splice(this.editedIndex, 1)
+                this.closeDelete()
+            },
+
+            close () {
+                this.dialog = false
+                this.$nextTick(() => {
+                    this.editedItem = Object.assign({}, this.defaultItem)
+                    this.editedIndex = -1
+                })
+            },
+
+            closeDelete () {
+                this.dialogDelete = false
+                this.$nextTick(() => {
+                    this.editedItem = Object.assign({}, this.defaultItem)
+                    this.editedIndex = -1
+                })
+            },
+
+            save () {
+                if (this.editedIndex > -1) {
+                    Object.assign(this.desserts[this.editedIndex], this.editedItem)
+                } else {
+                    this.desserts.push(this.editedItem)
+                }
+                this.close()
+            },
+        },
+    }
 </script>
+
