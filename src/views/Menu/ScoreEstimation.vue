@@ -28,7 +28,20 @@
                         <span>发送消息</span>
                     </v-btn>
                 </v-card-actions>
+                <v-col cols="12" md="6" sm="6">
+                    <v-btn block class="primary">第一个按钮</v-btn>
+                </v-col>
+                <v-col cols="12" md="2" sm="4" >
+                    <v-btn block class="primary">第二个按钮</v-btn>
+                </v-col>
+                <v-col cols="12" md="2" sm="4">
+                    <v-btn block class="primary">第三个按钮</v-btn>
+                </v-col>
+                <v-col cols="12" md="2" sm="4">
+                    <v-btn block class="primary">第四个按钮</v-btn>
+                </v-col>
             </v-card>
+
         </v-container>
 
     </div>
