@@ -1,51 +1,55 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
+import Layout from '@/views/Layout'
 
-Vue.use(Router)
-
-// Router.beforeEach((to, from, next)=>{
-//   // to要跳转到的路径
-//   // from从哪个路径来
-//   // next往下执行的回调
-//   // 在localStorage中获取token
-//   let token = localStorage.getItem('isLogin')
-//   // 判断该页面是否需要登录
-//   if(to.meta.auth){
-//     // 如果token存在直接跳转
-//     if(token){
-//       next()
-//     }else{
-//       // 否则跳转到login登录页面
-//       next({
-//         path:'/',
-//         // 跳转时传递参数到登录页面，以便登录后可以跳转到对应页面
-//         query:{
-//           redirect: to.fullPath
-//         }
-//       })
-//     }
-//   }else{
-//     // 如果不需要登录，则直接跳转到对应页面
-//     next()
-//   }
-// })
-
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+Vue.use(VueRouter)
+//default router
+//警告，路径是大小写相关的
+const routes= [
     {
       path: '/',
-      name: 'login',
-      component: () => import('./views/Login/Login.vue')
-    },
-    {
-      path: '/Main',
-      name: 'Main',
-      component: () => import('./views/Menu/Layout.vue'),
+      name: 'Layout',
+      component: Layout,
       meta:{
         auth:false
-      }
+      },
+      children:[
+        //  注意这里是空
+        {
+          path:'',
+          component:()=>import('@/views/Menu/ScoreQuery')
+        },
+        {
+          path:'SchoolPrediction',
+          component:()=>import('@/views/Menu/SchoolPrediction')
+        },
+        {
+          path:'ScoreEstimation',
+          component:()=>import('@/views/Menu/ScoreEstimation')
+        },
+        {
+          path:'SchoolInformation',
+          component:()=>import('@/views/Menu/SchoolInformation')
+        },
+        {
+          path:'DatabaseManagement',
+          component:()=>import('@/views/Menu/DatabaseManagement')
+        },
+        {
+          path:'AccountInformation',
+          component:()=>import('@/views/Menu/AccountInformation')
+        }
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/Login/Login')
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('./views/Login/Signup.vue')
     },
     {
       path: '/about',
@@ -54,25 +58,18 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      //下面这个是啥？
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/About.vue')
+          import(/* webpackChunkName: "about" */ './views/About')
     },
-
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('./views/Dashboard.vue')
+      component: () => import('./views/Dashboard')
     },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: () => import('./views/Login/Signup.vue')
-    },
-    {
-      path: '/Menu/Layout',
-      name: 'layout',
-      component: () => import('./views/Menu/Layout')
-    },
-  ]
+]
+const router = new VueRouter({
+  routes
 })
 
+export default router

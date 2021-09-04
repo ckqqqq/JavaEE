@@ -32,7 +32,10 @@
     <v-footer color="primary"
               dark
               padless>
-      <v-layout justify-center wrap>
+      <v-layout
+              justify-center
+              wrap>
+
         <v-flex primary
                 py-4
                 text-center
@@ -55,12 +58,16 @@ export default {
           //  label
           label: '登录',
           //  vue link
-          url: '/'
+          url: '/login'
         },
         {
           label: '注册',
           url: '/signup'
-        },
+        },{
+              label: '测试按钮',
+              //  vue link
+              url: '/about'
+          }
       ],
         test:{
             //  label

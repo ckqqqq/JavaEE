@@ -9,9 +9,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.12",
     "vue": "^2.6.10",
-    "vue-axios": "^3.2.5",
     "vue-router": "^3.0.3",
     "vuetify": "^2.1.0"
   },
