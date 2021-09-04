@@ -16,7 +16,8 @@ yarn install
 ```
 yarn run serve
 ```
-
+### 如果有报错
+npm install --save axios
 ### Compiles and minifies for production
 
 ```
