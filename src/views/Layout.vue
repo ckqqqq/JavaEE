@@ -80,8 +80,13 @@
 
 <script>
     import $session from '@/service/sessionService'
+    // import ScoreEstimation from '@/views/Menu/ScoreEstimation'
+    // import  test from '@/components/test'
     export default {
 
+        // components:{
+        //     "v-test":test
+        // },
         data() { return (
             {
             cards: ['Today', 'Yesterday'],

@@ -31,119 +31,205 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-data-table
-            :headers="headers"
-            :items="contacts"
-            :items-per-page="10"
-            dense
-        ></v-data-table>
+          <v-data-table
+                  :headers="headers"
+                  :items="contacts"
+                  :items-per-page="10"
+          >
+              <template v-slot:item.name="props">
+                  <v-edit-dialog
+                          :return-value.sync="props.item.name"
+                          @save="save"
+                          @cancel="cancel"
+                          @open="open"
+                          @close="close"
+                  >
+                      {{ props.item.name }}
+                      <template v-slot:input>
+                          <v-text-field
+                                  v-model="props.item.name"
+                                  :rules="[max25chars]"
+                                  label="Edit"
+                                  single-line
+                                  counter
+                          ></v-text-field>
+                      </template>
+                  </v-edit-dialog>
+              </template>
+              <template v-slot:item.iron="props">
+                  <v-edit-dialog
+                          :return-value.sync="props.item.iron"
+                          large
+                          persistent
+                          @save="save"
+                          @cancel="cancel"
+                          @open="open"
+                          @close="close"
+                  >
+                      <div>{{ props.item.iron }}</div>
+                      <template v-slot:input>
+                          <div class="mt-4 text-h6">
+                              Update Iron
+                          </div>
+                          <v-text-field
+                                  v-model="props.item.iron"
+                                  :rules="[max25chars]"
+                                  label="Edit"
+                                  single-line
+                                  counter
+                                  autofocus
+                          ></v-text-field>
+                      </template>
+                  </v-edit-dialog>
+              </template>
+          </v-data-table>
       </v-col>
     </v-row>
+      <v-snackbar
+              v-model="snack"
+              :timeout="3000"
+              :color="snackColor"
+      >
+          {{ snackText }}
+
+          <template v-slot:action="{ attrs }">
+              <v-btn
+                      v-bind="attrs"
+                      text
+                      @click="snack = false"
+              >
+                  Close
+              </v-btn>
+          </template>
+      </v-snackbar>
   </v-container>
 </template>
-
 <script>
-export default {
-  name: 'Contacts',
-  data: () => ({
-    headers: [
-      {
-        text: 'Name',
-        align: 'start',
-        sortable: true,
-        value: 'name',
-      },
-      { text: 'Nick name', value: 'nickname' },
-      { text: 'Mobile', value: 'mobile' },
-      { text: 'Email', value: 'email' },
-      { text: 'Birthday', value: 'birthday' }
-    ],
-    contacts: [
-      {
-        name: 'Dallas Daly',
-        nickname: 'dallas',
-        mobile: '010-2312-1234',
-        email: 'dallas@home.com',
-        birthday: '1990/01/02'
-      },
-      {
-        name: 'Aniyah Tierney',
-        nickname: 'aniyah',
-        mobile: '010-4231-5463',
-        email: 'aniyah@home.com',
-        birthday: '1980/01/02'
-      },
-      {
-        name: 'Darnell Phillips',
-        nickname: 'darnell',
-        mobile: '010-8645-9634',
-        email: 'darnell@home.com',
-        birthday: '1970/01/02'
-      },
-      {
-        name: 'Diana Henry',
-        nickname: 'diana',
-        mobile: '010-5665-2323',
-        email: 'diana@home.com',
-        birthday: '1960/01/02'
-      },
-      {
-        name: 'Paxton Pennington',
-        nickname: 'paxton',
-        mobile: '010-6565-8787',
-        email: 'paxton@home.com',
-        birthday: '1950/01/02'
-      },
-      {
-        name: 'Blanca Ruiz',
-        nickname: 'blanca',
-        mobile: '010-1212-3434',
-        email: 'blanca@home.com',
-        birthday: '1940/01/02'
-      },
-      {
-        name: 'Bilal Finch',
-        nickname: 'bilal',
-        mobile: '010-7564-3455',
-        email: 'bilal@home.com',
-        birthday: '1930/01/02'
-      },
-      {
-        name: 'Joanna Hoover',
-        nickname: 'joanna',
-        mobile: '010-8787-1234',
-        email: 'joanna@home.com',
-        birthday: '2000/01/02'
-      },
-      {
-        name: 'Garrison White',
-        nickname: 'garrison',
-        mobile: '010-6789-1234',
-        email: 'garrison@home.com',
-        birthday: '2001/01/02'
-      },
-      {
-        name: 'Lizbeth Bauer',
-        nickname: 'lizbeth',
-        mobile: '010-8970-1524',
-        email: 'lizbeth@home.com',
-        birthday: '2001/01/02'
-      },
-      {
-        name: 'Kevin McDougall',
-        nickname: 'kevin',
-        mobile: '010-2312-3211',
-        email: 'kevin@home.com',
-        birthday: '2002/01/02'
-      },
-      {
-        name: 'Carrie Hay',
-        nickname: 'carrie',
-        mobile: '010-7675-9898',
-        email: 'carrie@home.com',
-        birthday: '2003/01/02'
-      }
-    ]
-  })
-}
+    export default {
+        name: 'Contacts',
+        data () {
+            return {
+                snack: false,
+                snackColor: '',
+                snackText: '',
+                max25chars: v => v.length <= 25 || 'Input too long!',
+                pagination: {},
+                headers: [
+                    {
+                        text: '账户',
+                        align: 'start',
+                        sortable: false,
+                        value: 'name',
+                    },
+                    { text: 'Calories', value: 'calories' },
+                    { text: 'Fat (g)', value: 'fat' },
+                    { text: 'Carbs (g)', value: 'carbs' },
+                    { text: 'Protein (g)', value: 'protein' },
+                    { text: 'Iron (%)', value: 'iron' },
+                ],
+                contacts: [
+                    {
+                        name: 'Frozen Yogurt',
+                        calories: 159,
+                        fat: 6.0,
+                        carbs: 24,
+                        protein: 4.0,
+                        iron: '1%',
+                    },
+                    {
+                        name: 'Ice cream sandwich',
+                        calories: 237,
+                        fat: 9.0,
+                        carbs: 37,
+                        protein: 4.3,
+                        iron: '1%',
+                    },
+                    {
+                        name: 'Eclair',
+                        calories: 262,
+                        fat: 16.0,
+                        carbs: 23,
+                        protein: 6.0,
+                        iron: '7%',
+                    },
+                    {
+                        name: 'Cupcake',
+                        calories: 305,
+                        fat: 3.7,
+                        carbs: 67,
+                        protein: 4.3,
+                        iron: '8%',
+                    },
+                    {
+                        name: 'Gingerbread',
+                        calories: 356,
+                        fat: 16.0,
+                        carbs: 49,
+                        protein: 3.9,
+                        iron: '16%',
+                    },
+                    {
+                        name: 'Jelly bean',
+                        calories: 375,
+                        fat: 0.0,
+                        carbs: 94,
+                        protein: 0.0,
+                        iron: '0%',
+                    },
+                    {
+                        name: 'Lollipop',
+                        calories: 392,
+                        fat: 0.2,
+                        carbs: 98,
+                        protein: 0,
+                        iron: '2%',
+                    },
+                    {
+                        name: 'Honeycomb',
+                        calories: 408,
+                        fat: 3.2,
+                        carbs: 87,
+                        protein: 6.5,
+                        iron: '45%',
+                    },
+                    {
+                        name: 'Donut',
+                        calories: 452,
+                        fat: 25.0,
+                        carbs: 51,
+                        protein: 4.9,
+                        iron: '22%',
+                    },
+                    {
+                        name: 'KitKat',
+                        calories: 518,
+                        fat: 26.0,
+                        carbs: 65,
+                        protein: 7,
+                        iron: '6%',
+                    },
+                ],
+            }
+        },
+        methods: {
+            save () {
+                this.snack = true
+                this.snackColor = 'success'
+                this.snackText = 'Data saved'
+            },
+            cancel () {
+                this.snack = true
+                this.snackColor = 'error'
+                this.snackText = 'Canceled'
+            },
+            open () {
+                this.snack = true
+                this.snackColor = 'info'
+                this.snackText = 'Dialog opened'
+            },
+            close () {
+                console.log('Dialog closed')
+            },
+        },
+    }
 </script>
