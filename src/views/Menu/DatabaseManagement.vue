@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <span>Contacts</span>
+        <span>DatabaseManageement</span>
       </v-col>
     </v-row>
     <v-row>
@@ -11,18 +11,18 @@
             <v-row>
               <v-col cols="4">
                 <v-select
-                    :items="['Name', 'Email', 'Nickname']"
-                    label="Type"
+                    :items="['姓名', 'Email', '账户']"
+                    label="类型"
                 ></v-select>
               </v-col>
               <v-col cols="4">
                 <v-text-field
-                    label="Search"
+                    label="查找"
                 ></v-text-field>
               </v-col>
               <v-col cols="2">
                 <v-btn color="primary">
-                  Search
+                  查找
                 </v-btn>
               </v-col>
             </v-row>
@@ -44,104 +44,104 @@
 
 <script>
 export default {
-  name: 'DatabaseManageement',
+  姓名: 'DatabaseManageement',
   data: () => ({
     headers: [
       {
-        text: 'Name',
+        text: '姓名',
         align: 'start',
         sortable: true,
-        value: 'name',
+        value: '姓名',
       },
-      { text: 'Nick name', value: 'nickname' },
+      { text: '账户', value: '账户' },
       { text: 'Mobile', value: 'mobile' },
       { text: 'Email', value: 'email' },
-      { text: 'Birthday', value: 'birthday' }
+      { text: '分数', value: '分数' }
     ],
     contacts: [
       {
-        name: 'Dallas Daly',
-        nickname: 'dallas',
+        姓名: 'Dallas Daly',
+        账户: 'dallas',
         mobile: '010-2312-1234',
         email: 'dallas@home.com',
-        birthday: '1990/01/02'
+        分数: '199 '
       },
       {
-        name: 'Aniyah Tierney',
-        nickname: 'aniyah',
+        姓名: 'Aniyah Tierney',
+        账户: 'aniyah',
         mobile: '010-4231-5463',
         email: 'aniyah@home.com',
-        birthday: '1980/01/02'
+        分数: '198 '
       },
       {
-        name: 'Darnell Phillips',
-        nickname: 'darnell',
+        姓名: 'Darnell Phillips',
+        账户: 'darnell',
         mobile: '010-8645-9634',
         email: 'darnell@home.com',
-        birthday: '1970/01/02'
+        分数: '197 '
       },
       {
-        name: 'Diana Henry',
-        nickname: 'diana',
+        姓名: 'Diana Henry',
+        账户: 'diana',
         mobile: '010-5665-2323',
         email: 'diana@home.com',
-        birthday: '1960/01/02'
+        分数: '196 '
       },
       {
-        name: 'Paxton Pennington',
-        nickname: 'paxton',
+        姓名: 'Paxton Pennington',
+        账户: 'paxton',
         mobile: '010-6565-8787',
         email: 'paxton@home.com',
-        birthday: '1950/01/02'
+        分数: '195 '
       },
       {
-        name: 'Blanca Ruiz',
-        nickname: 'blanca',
+        姓名: 'Blanca Ruiz',
+        账户: 'blanca',
         mobile: '010-1212-3434',
         email: 'blanca@home.com',
-        birthday: '1940/01/02'
+        分数: '194 '
       },
       {
-        name: 'Bilal Finch',
-        nickname: 'bilal',
+        姓名: 'Bilal Finch',
+        账户: 'bilal',
         mobile: '010-7564-3455',
         email: 'bilal@home.com',
-        birthday: '1930/01/02'
+        分数: '193 '
       },
       {
-        name: 'Joanna Hoover',
-        nickname: 'joanna',
+        姓名: 'Joanna Hoover',
+        账户: 'joanna',
         mobile: '010-8787-1234',
         email: 'joanna@home.com',
-        birthday: '2000/01/02'
+        分数: '200 '
       },
       {
-        name: 'Garrison White',
-        nickname: 'garrison',
+        姓名: 'Garrison White',
+        账户: 'garrison',
         mobile: '010-6789-1234',
         email: 'garrison@home.com',
-        birthday: '2001/01/02'
+        分数: '2001/01/02'
       },
       {
-        name: 'Lizbeth Bauer',
-        nickname: 'lizbeth',
+        姓名: 'Lizbeth Bauer',
+        账户: 'lizbeth',
         mobile: '010-8970-1524',
         email: 'lizbeth@home.com',
-        birthday: '2001/01/02'
+        分数: '2001/01/02'
       },
       {
-        name: 'Kevin McDougall',
-        nickname: 'kevin',
+        姓名: 'Kevin McDougall',
+        账户: 'kevin',
         mobile: '010-2312-3211',
         email: 'kevin@home.com',
-        birthday: '2002/01/02'
+        分数: '200'
       },
       {
-        name: 'Carrie Hay',
-        nickname: 'carrie',
+        姓名: 'Carrie Hay',
+        账户: 'carrie',
         mobile: '010-7675-9898',
         email: 'carrie@home.com',
-        birthday: '2003/01/02'
+        分数: '200'
       }
     ]
   })
