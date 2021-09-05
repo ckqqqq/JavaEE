@@ -2,6 +2,15 @@
     <v-container>
         <v-row>
             <v-col>
+                <v-btn
+                        color="info"
+                        @click="this.TestPos"
+                >测试按钮
+                </v-btn>
+                <v-text-field label="输入测试url " v-model="test_url" prepend-icon="mdi-account-circle"/>
+                <v-text-field label="var1 " v-model="test_var1" prepend-icon="mdi-account-circle"/>
+                <v-text-field label="var2 " v-model="test_var2" prepend-icon="mdi-account-circle"/>
+
                 <span>本班一本率 （后端传，有时间放个图）</span>
             </v-col>
         </v-row>
@@ -207,9 +216,12 @@
     </v-container>
 </template>
 <script>
+    import axios from "axios";
+
     export default {
         name: 'Contacts',
         data: () => ({
+
             dialog: false,
             dialogDelete: false,
             headers: [
@@ -241,6 +253,10 @@
                 score: 0,
                 class: 0,
             },
+            test_url:"",//测试的url
+            test_var1:"",//测试的var1
+            test_var2:"",//测试的var2
+
         }),
 
         computed: {
@@ -263,7 +279,40 @@
         },
 
         methods: {
-
+            TestPos: function () {
+                var that = this;
+                var url =this.test_url;
+                // rl = 'http://127.0.0.1:9090/student/login';
+                // url = 'http://127.0.0.1:9090/student/login';
+                // axios.post("http://127.0.0.1:9090/student/login",{id:'300',password:'ming'})
+                axios({
+                    url: url,
+                    method: 'post',
+                    //这里传入变量
+                    params: {
+                        id: that.test_var1,
+                        password: that.test_var2,
+                    }
+                })
+                    .then(function (response) {
+                        console.log(response.data.data["name"])
+                        if (response.data.msg === "成功") {
+                            that.resp = response;
+                            that.isLogin = true;
+                            alert("欢迎登陆，用户：" + that.resp.data.data['name']);
+                            //存储当前用户的登录状态
+                            //触发提示：后期可以删除
+                            alert("欢迎登陆，用户：" + that.resp.data.data['name']);
+                            //跳转到指定页面
+                            that.$router.push('/');
+                        } else {
+                            alert("您的用户名或密码输入错误，请检查。");
+                        }
+                    })
+                    .catch(function (err) {
+                        alert("您的用户名或密码输入错误，请检查。");
+                    })
+            },
             initialize () {
                 this.desserts = [
                     {
