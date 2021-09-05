@@ -295,7 +295,8 @@
                     }
                 })
                     .then(function (response) {
-                        console.log(response.data.data["name"])
+                        // console.log(that.resp.data.data)
+                        alert("欢迎登陆，用户：" + response.data.d);
                         if (response.data.msg === "成功") {
                             that.resp = response;
                             that.isLogin = true;
@@ -308,9 +309,6 @@
                         } else {
                             alert("您的用户名或密码输入错误，请检查。");
                         }
-                    })
-                    .catch(function (err) {
-                        alert("您的用户名或密码输入错误，请检查。");
                     })
             },
             initialize () {
