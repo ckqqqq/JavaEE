@@ -89,7 +89,7 @@
         // },
         data() { return (
             {
-            cards: ['Today', 'Yesterday'],
+            //cards: ['Today', 'Yesterday'],
             drawer: null,
             account_link:{path:'/AccountInformation'},
             menu_links: [
