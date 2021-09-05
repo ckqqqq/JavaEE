@@ -89,15 +89,15 @@
         // },
         data() { return (
             {
-            cards: ['Today', 'Yesterday'],
+            //cards: ['Today', 'Yesterday'],
             drawer: null,
             account_link:{path:'/AccountInformation'},
             menu_links: [
                 {icon:'mdi-inbox-arrow-down', text:'分数查询',path:'/'},
                 {icon:'mdi-face', text:'志愿预测',path:'/SchoolPrediction'},
-                {icon:'fa-acorn', text:'提前估分',path:'/ScoreEstimation'},
-                {icon:'mdi-ad', text:'学校信息',path:'/SchoolInformation'},
-                {icon:'mdi-alert-octagon',text: '更多',path:'/DatabaseManagement'},
+                {icon:'mdi-school', text:'提前估分',path:'/ScoreEstimation'},
+                {icon:'mdi-library', text:'学校信息',path:'/SchoolInformation'},
+                {icon:'mdi-all-inclusive',text: '更多',path:'/DatabaseManagement'},
             ],
         })
         },

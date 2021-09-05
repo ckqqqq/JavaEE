@@ -24,11 +24,16 @@
 <script>
 export default {
   name: 'EventTimeline',
+  data() {
+    return {
+
+    }
+  },
   props: {
     timeline: {
       type: Array,
       required: true
     }
-  }
+  },
 }
 </script>
