@@ -5,7 +5,9 @@
                         v-if="item.header"
                         :key="item.header"
                         v-text="item.header"
-                >你好无啊</v-subheader>
+                >
+                  你好sdfsdfsd无啊
+                </v-subheader>
 
                 <v-divider
                         v-else-if="item.divider"
@@ -18,7 +20,13 @@
                         :key="item.title"
                 >
                     <v-list-item-avatar>
-                        <v-img :src="item.avatar"></v-img>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <v-img
+                            :src="item.pic"
+                            min-height="60"
+                            min-width="60"
+                        >
+                        </v-img>
                     </v-list-item-avatar>
 
                     <v-list-item-content>
@@ -27,52 +35,65 @@
                         <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
                         </v-col>
                         <v-col>
-                            <v-btn link color="green" @click="ExternalLink(item.link)">官网</v-btn>
+                            <v-btn width="100" link color="primary" @click="ExternalLink(item.officialWebsite)">学校官网</v-btn>
                         </v-col>
                         <v-col>
-                            <v-btn link color="blue " @click="ExternalLink(item.link)">优势专业一</v-btn>
+                            <v-btn width="200" link color="primary" @click="ExternalLink(item.fractionalLine)">历年提档线及各专业分数线</v-btn>
                         </v-col>
                         <v-col>
-                            <v-btn link color="yellow " @click="ExternalLink(item.link)">优势专业二</v-btn>
+                            <v-btn width="100" link color="primary " @click="ExternalLink(item.universityForum)">高校论坛</v-btn>
                         </v-col>
                         <v-col>
-                            <v-btn link color="yellow " @click="ExternalLink(item.link)">优势专业二</v-btn>
+                            <v-btn width="300" link color="primary " @click="ExternalLink(item.zhihu)">在该校读书是一种怎样的体验--知乎</v-btn>
                         </v-col>
                     </v-list-item-content>
                 </v-list-item>
             </template>
         </v-list>
 </template>
+
+
+
 <script>
     export default {
         data: () => ({
             items: [
-                { header: '高校信息 杨兄负责调整配色和连接' },
-                //注意这里是
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                    title: '<span class="heading text--lighten-1 font-weigh">天津人大学</span>',
-                    subtitle: `
-                       <span class="card-panel text--lighten-1 font-weigh">天津人大学</span>
-                    &mdash; 上面是不同字体`,
-                    link:'http://www.tju.edu.cn/',
-                //    vuetify.min.css
-                },
+                { header: '高校信息' },
+                // //注意这里是
+                // {
+                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+                //     title: '<span class="heading text--lighten-1 font-weigh">海南人大学</span>',
+                //     subtitle: `
+                //        <span class="card-panel text--lighten-1 font-weigh">海南人大学</span>
+                //     &mdash; 上面是不同字体`,
+                //     link:'http://www.tju.edu.cn/',
+                // //    vuetify.min.css
+                // },
+                // { divider: true, inset: true },
+                // {
+                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+                //     title: '<span class=" red--text font-weight-bold text--lighten-1 font-weigh">说唱大学</span><span class="grey--text text--lighten-1">4</span>',
+                //     subtitle: `<span class="text--primary">双一流A类</span> &mdash; 连接.`,
+                //     link:'http://www.bupt.edu.cn/'
+                // },
+                // { divider: true, inset: true },
+                // {
+                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+                //     title: '<span class="headline  red--text font-weight-bold text--lighten-1 font-weigh">北京美容美发大学</span>',
+                //     subtitle: ' &mdash;  连接?',
+                //     link:'http://www.bupt.edu.cn/'
+                // },
                 { divider: true, inset: true },
                 {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                    title: '<span class=" red--text font-weight-bold text--lighten-1 font-weigh">北京理工大学</span><span class="grey--text text--lighten-1">4</span>',
-                    subtitle: `<span class="text--primary">双一流A类</span> &mdash; 连接.`,
-                    link:'http://www.bupt.edu.cn/'
+                  pic: 'https://upload.wikimedia.org/wikipedia/zh/thumb/d/d6/Beijing_University_of_Posts_and_Telecommunications.jpg/205px-Beijing_University_of_Posts_and_Telecommunications.jpg',
+                  title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">北京邮电大学</span>',
+                  subtitle: '普通本科/理工类/公办/211工程/一流学科建设高校',
+                  link:'http://www.bupt.edu.cn/',
+                  officialWebsite:'http://www.bupt.edu.cn/',
+                  fractionalLine:'https://gkcx.eol.cn/school/48/provinceline',
+                  universityForum:'https://bbs.byr.cn/index',
+                  zhihu:'https://www.zhihu.com/question/401636225',
                 },
-                { divider: true, inset: true },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                    title: '<span class="headline red--text font-weight-bold text--lighten-1 font-weigh">北京美容美发大学</span>',
-                    subtitle: ' &mdash;  连接?',
-                    link:'http://www.bupt.edu.cn/'
-                },
-
             ],
         }),
         methods :{
@@ -82,6 +103,7 @@
         }
     }
 </script>
+
 <!--<template>-->
 <!--    <v-container>-->
 <!--        <v-layout text-center wrap>-->
