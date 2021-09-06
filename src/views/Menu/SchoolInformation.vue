@@ -1,236 +1,140 @@
 <template>
-        <v-list three-line>
-            <template v-for="(item, index) in items">
-                <v-subheader
-                        v-if="item.header"
-                        :key="item.header"
-                        v-text="item.header"
-                >
-                  你好sdfsdfsd无啊
-                </v-subheader>
 
-                <v-divider
-                        v-else-if="item.divider"
-                        :key="index"
-                        :inset="item.inset"
-                ></v-divider>
 
-                <v-list-item
-                        v-else
-                        :key="item.title"
-                >
-                    <v-list-item-avatar>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <v-img
-                            :src="item.pic"
-                            min-height="60"
-                            min-width="60"
-                        >
-                        </v-img>
-                    </v-list-item-avatar>
+  <v-list three-line>
+    <template v-for="(item, index) in items">
+      <v-subheader
+          v-if="item.header"
+          :key="item.header"
+          v-text="item.header"
+      >
+        你好sdfsdfsd无啊
+      </v-subheader>
+      <v-divider
+          v-else-if="item.divider"
+          :key="index"
+          :inset="item.inset"
+      ></v-divider>
+      <v-list-item
+          v-else
+          :key="item.title"
+      >
 
-                    <v-list-item-content>
-                        <v-col>
-                        <v-list-item-title v-html="item.title"></v-list-item-title>
-                        <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-                        </v-col>
-                        <v-col>
-                            <v-btn width="100" link color="primary" @click="ExternalLink(item.officialWebsite)">学校官网</v-btn>
-                        </v-col>
-                        <v-col>
-                            <v-btn width="200" link color="primary" @click="ExternalLink(item.fractionalLine)">历年提档线及各专业分数线</v-btn>
-                        </v-col>
-                        <v-col>
-                            <v-btn width="100" link color="primary " @click="ExternalLink(item.universityForum)">高校论坛</v-btn>
-                        </v-col>
-                        <v-col>
-                            <v-btn width="300" link color="primary " @click="ExternalLink(item.zhihu)">在该校读书是一种怎样的体验--知乎</v-btn>
-                        </v-col>
-                    </v-list-item-content>
-                </v-list-item>
-            </template>
-        </v-list>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <v-avatar>
+          <v-img
+              :src="item.pic"
+              min-height="75"
+              min-width="75"
+          >
+          </v-img>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </v-avatar>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+        <v-list-item-content>
+          <v-col>
+            &nbsp;&nbsp;
+            <v-list-item-title v-html="item.title"></v-list-item-title>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+          </v-col>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <v-row style="margin-top: 2vh;width: 100%">
+            <v-col >
+              <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.officialWebsite)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      学校官网      &nbsp;&nbsp;&nbsp;       </v-btn>
+            </v-col>
+            <v-col >
+              <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.fractionalLine)">历年提档线及各专业分数线</v-btn>
+            </v-col>
+            <v-col >
+              <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.universityForum)">高校论坛</v-btn>
+            </v-col>
+            <v-col >
+              <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.zhihu)">在该校读书是一种怎样的体验--知乎</v-btn>
+            </v-col>
+          </v-row>
+
+        </v-list-item-content>
+
+      </v-list-item>
+    </template>
+  </v-list>
+
+
 </template>
 
 
 
 <script>
-    export default {
-        data: () => ({
-            items: [
-                { header: '高校信息' },
-                // //注意这里是
-                // {
-                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                //     title: '<span class="heading text--lighten-1 font-weigh">海南人大学</span>',
-                //     subtitle: `
-                //        <span class="card-panel text--lighten-1 font-weigh">海南人大学</span>
-                //     &mdash; 上面是不同字体`,
-                //     link:'http://www.tju.edu.cn/',
-                // //    vuetify.min.css
-                // },
-                // { divider: true, inset: true },
-                // {
-                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                //     title: '<span class=" red--text font-weight-bold text--lighten-1 font-weigh">说唱大学</span><span class="grey--text text--lighten-1">4</span>',
-                //     subtitle: `<span class="text--primary">双一流A类</span> &mdash; 连接.`,
-                //     link:'http://www.bupt.edu.cn/'
-                // },
-                // { divider: true, inset: true },
-                // {
-                //     avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                //     title: '<span class="headline  red--text font-weight-bold text--lighten-1 font-weigh">北京美容美发大学</span>',
-                //     subtitle: ' &mdash;  连接?',
-                //     link:'http://www.bupt.edu.cn/'
-                // },
-                { divider: true, inset: true },
-                {
-                  pic: 'https://upload.wikimedia.org/wikipedia/zh/thumb/d/d6/Beijing_University_of_Posts_and_Telecommunications.jpg/205px-Beijing_University_of_Posts_and_Telecommunications.jpg',
-                  title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">北京邮电大学</span>',
-                  subtitle: '普通本科/理工类/公办/211工程/一流学科建设高校',
-                  link:'http://www.bupt.edu.cn/',
-                  officialWebsite:'http://www.bupt.edu.cn/',
-                  fractionalLine:'https://gkcx.eol.cn/school/48/provinceline',
-                  universityForum:'https://bbs.byr.cn/index',
-                  zhihu:'https://www.zhihu.com/question/401636225',
-                },
-            ],
-        }),
-        methods :{
-            ExternalLink(link){
-                window.location.href = link;
-            }
-        }
+export default {
+  data: () => ({
+    items: [
+      { header: '高校信息' },
+      { divider: true, inset: true },
+      {
+        pic: 'https://upload.wikimedia.org/wikipedia/zh/thumb/d/d6/Beijing_University_of_Posts_and_Telecommunications.jpg/205px-Beijing_University_of_Posts_and_Telecommunications.jpg',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">北京邮电大学</span>',
+        subtitle: '普通本科/理工类/公办/211工程/一流学科建设高校',
+        officialWebsite:'http://www.bupt.edu.cn/',
+        fractionalLine:'https://gkcx.eol.cn/school/48/provinceline',
+        universityForum:'https://bbs.byr.cn/index',
+        zhihu:'https://www.zhihu.com/question/401636225',
+      },
+      {
+        pic: 'https://tse1-mm.cn.bing.net/th/id/R-C.4b43eae59b6593d567772d944cd0f2b8?rik=yGGWqRDy2Do83A&riu=http%3a%2f%2fpic18.nipic.com%2f20111220%2f9114815_223214639177_2.jpg&ehk=UBdZOSi91xUXBeqT5avuf01D01PxTpVw%2fz%2f13d3AyVQ%3d&risl=&pid=ImgRaw&r=0',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">清华大学</span>',
+        subtitle: '北京/理工类/211/双一流',
+        officialWebsite:'https://www.tsinghua.edu.cn/',
+        fractionalLine:'https://gkcx.eol.cn/school/140?fromcoop=bdkp',
+        universityForum:'http://www.thubbs.cn/',
+        zhihu:'https://www.zhihu.com/question/24399025',
+      },
+      {
+        pic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Peking_University_seal.svg/1200px-Peking_University_seal.svg.png',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">北京大学</span>',
+        subtitle: '北京/综合类/985/211/双一流/强基计划',
+        officialWebsite:'https://www.pku.edu.cn/',
+        fractionalLine:'https://gkcx.eol.cn/school/31/provinceline',
+        universityForum:'https://bbs.pku.edu.cn/v2/login.php',
+        zhihu:'https://www.zhihu.com/question/24324127',
+      },
+      {
+        pic: 'https://tse1-mm.cn.bing.net/th/id/R-C.0007e42adc8dbc149ae1fa7eaf688fd3?rik=yv7obt4dL9FESg&riu=http%3a%2f%2fpic312.nipic.com%2ffile%2f20200728%2f25102742_095939008081_2.jpg&ehk=U0oU31dkcVAi7vUvdZNMslSH93oxGtbASL0ylqaZ8S4%3d&risl=&pid=ImgRaw&r=0',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">复旦大学</span>',
+        subtitle: '上海/综合类/985/211/双一流/强基计划',
+        officialWebsite:'https://www.fudan.edu.cn/',
+        fractionalLine:'https://gkcx.eol.cn/school/132?fromcoop=bdkp',
+        universityForum:'http://fdubbs.com/',
+        zhihu:'https://www.zhihu.com/question/24341214',
+      },
+      {
+        pic:'https://tse1-mm.cn.bing.net/th/id/R-C.d6d6663f19cb6d092dd5103967fa2ce1?rik=Br2afVmAk6O%2bxg&riu=http%3a%2f%2fpic4.nipic.com%2f20091008%2f3514877_105332022531_2.jpg&ehk=w3uo19t4%2fGeXPky2xL%2fbaKu0htW3fBM2UQYo1z3eGjU%3d&risl=&pid=ImgRaw&r=0',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">上海交通大学</span>',
+        subtitle: '上海/综合类/985/211/公办/双一流/强基计划',
+        officialWebsite:'https://www.sjtu.edu.cn/',
+        fractionalLine:'https://gkcx.eol.cn/school/125?fromcoop=bdkp',
+        universityForum:'http://bbs.stmit.com/',
+        zhihu:'https://www.zhihu.com/question/24363994',
+      },
+      {
+        pic:'https://tse1-mm.cn.bing.net/th/id/R-C.15f20d48a79d2feb66e312a6300066f8?rik=v7UhQJYhMRAj5Q&riu=http%3a%2f%2fpic.gerenjianli.com%2fxiaohui2046%2fb29.jpg&ehk=oUu7r6qT3IVj8ayTWeo1NKRMh7heViqG3iIO3zqpd4Q%3d&risl=&pid=ImgRaw&r=0',
+        title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">中山大学</span>',
+        subtitle: '广州/综合类/985/211/公办/双一流/强基计划',
+        officialWebsite:'http://www.sysu.edu.cn/cn/index.htm',
+        fractionalLine:'https://gkcx.eol.cn/school/104?fromcoop=bdkp',
+        universityForum:'http://bbs.zhxjc.org/',
+        zhihu:'https://www.zhihu.com/question/24349296',
+      },
+
+    ],
+  }),
+  methods :{
+    ExternalLink(link){
+      window.location.href = link;
     }
+  }
+}
 </script>
-
-<!--<template>-->
-<!--    <v-container>-->
-<!--        <v-layout text-center wrap>-->
-<!--            <v-flex xs12>-->
-<!--                <v-img-->
-<!--                        :src="require('../../assets/logo.svg')"-->
-<!--                        class="my-3"-->
-<!--                        contain-->
-<!--                        height="200"-->
-<!--                ></v-img>-->
-<!--            </v-flex>-->
-
-<!--            <v-flex mb-4>-->
-<!--                <h1 class="display-2 font-weight-bold mb-3">-->
-<!--                    Welcome to Vuetify-->
-<!--                </h1>-->
-<!--                <p class="subheading font-weight-regular">-->
-<!--                    For help and collaboration with other Vuetify developers,-->
-<!--                    <br />please join our online-->
-
-<!--                </p>-->
-<!--            </v-flex>-->
-
-<!--            <v-flex mb-5 xs12>-->
-<!--                <h2 class="headline font-weight-bold mb-3">What's next?</h2>-->
-
-<!--                <v-layout justify-center>-->
-<!--                    <a-->
-<!--                            v-for="(next, i) in whatsNext"-->
-<!--                            :key="i"-->
-<!--                            :href="next.href"-->
-<!--                            class="subheading mx-3"-->
-<!--                            target="_blank"-->
-<!--                    >-->
-<!--                        {{ next.text }}-->
-<!--                    </a>-->
-<!--                </v-layout>-->
-<!--            </v-flex>-->
-
-<!--            <v-flex xs12 mb-5>-->
-<!--                <h2 class="headline font-weight-bold mb-3">Important Links</h2>-->
-
-<!--                <v-layout justify-center>-->
-<!--                    <a-->
-<!--                            v-for="(link, i) in importantLinks"-->
-<!--                            :key="i"-->
-<!--                            :href="link.href"-->
-<!--                            class="subheading mx-3"-->
-<!--                            target="_blank"-->
-<!--                    >-->
-<!--                        {{ link.text }}-->
-<!--                    </a>-->
-<!--                </v-layout>-->
-<!--            </v-flex>-->
-
-<!--            <v-flex xs12 mb-5>-->
-<!--                <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>-->
-
-<!--                <v-layout justify-center>-->
-<!--                    <a-->
-<!--                            v-for="(eco, i) in ecosystem"-->
-<!--                            :key="i"-->
-<!--                            :href="eco.href"-->
-<!--                            class="subheading mx-3"-->
-<!--                            target="_blank"-->
-<!--                    >-->
-<!--                        {{ eco.text }}-->
-<!--                    </a>-->
-<!--                </v-layout>-->
-<!--            </v-flex>-->
-<!--        </v-layout>-->
-<!--    </v-container>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--    export default {-->
-<!--        data: () => ({-->
-<!--            ecosystem: [-->
-<!--                {-->
-<!--                    text: 'vuetify-loader',-->
-<!--                    href: 'https://github.com/vuetifyjs/vuetify-loader'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'github',-->
-<!--                    href: 'https://github.com/vuetifyjs/vuetify'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'awesome-vuetify',-->
-<!--                    href: 'https://github.com/vuetifyjs/awesome-vuetify'-->
-<!--                }-->
-<!--            ],-->
-<!--            importantLinks: [-->
-<!--                {-->
-<!--                    text: 'Documentation',-->
-<!--                    href: 'https://vuetifyjs.com'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Chat',-->
-<!--                    href: 'https://community.vuetifyjs.com'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Made with Vuetify',-->
-<!--                    href: 'https://madewithvuejs.com/vuetify'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Twitter',-->
-<!--                    href: 'https://twitter.com/vuetifyjs'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Articles',-->
-<!--                    href: 'https://medium.com/vuetify'-->
-<!--                }-->
-<!--            ],-->
-<!--            whatsNext: [-->
-<!--                {-->
-<!--                    text: 'Explore components',-->
-<!--                    href: 'https://vuetifyjs.com/components/api-explorer'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Select a layout',-->
-<!--                    href: 'https://vuetifyjs.com/layout/pre-defined'-->
-<!--                },-->
-<!--                {-->
-<!--                    text: 'Frequently Asked Questions',-->
-<!--                    href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'-->
-<!--                }-->
-<!--            ]-->
-<!--        })-->
-<!--    }-->
-<!--</script>-->
