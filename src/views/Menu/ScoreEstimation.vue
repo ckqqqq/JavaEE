@@ -1,28 +1,25 @@
 <template>
     <div class="about">
-        <h1></h1>
 
         <v-container class="grey lighten-5">
-            <v-col>
-                <v-select
-                        :items="['北京卷', '天津卷', '账户']"
-                        label="试卷"
-                ></v-select>
-            </v-col>
-            <v-col>
-                <v-text-field
-                        label="分数"
-                ></v-text-field>
-            </v-col>
+          <v-col
+              class="d-flex"
+              cols="20"
+              sm="2"
+          >
+            <v-select
+                    max-width="100"
+                    :items="['北京卷', '天津卷', '全国卷I','全国卷II']"
+                    label="请选择您的试卷"
+            ></v-select>
+          </v-col>
 
             <v-row>
                 <v-col v-for="subject in subjects" :key="`${subject.title}`" cols="12" md="4">
                     <SubjectCard :subject="subject" />
                 </v-col>
             </v-row>
-
         </v-container>
-
     </div>
 </template>
 

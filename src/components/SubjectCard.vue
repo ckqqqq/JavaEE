@@ -1,7 +1,16 @@
 <!--labels 代表表格的横坐标-->
 <!--subjects 代表表格的值-->
 <template>
-  <v-card :color="subject.color"  border-radius:50px dark>
+  <v-card :color="subject.color"  max-height="450" dark>
+
+    <v-img
+        class="white--text align-end"
+        height="230px"
+        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+    >
+      <v-card-title>禹门已准桃花浪，月殿先收桂子香</v-card-title>
+    </v-img>
+
     <v-card-text>
         <v-card-text class="text-center">
             <div class="display-1 font-weight-black">{{ subject.title }}</div>
