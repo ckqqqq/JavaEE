@@ -160,7 +160,7 @@ export default {
           passwordRules: [v => !!v || "请输入密码"],
           confirmPasswordRules: [v => !!v || "请输入验证密码"],
 
-          identities: ['学生', '教师', '管理用户'],
+          identities: ['学生', '教师'],
           identityRules: [
             value =>
                 !!value ||
@@ -171,9 +171,6 @@ export default {
             value => !!value || '您需要输入邮箱',
             value => value.indexOf('@') !== 0 || 'Email 应该有用户名',
             value => value.includes('@') || 'Email 应当包含“@”字符',
-            value =>
-                value.indexOf('.') - value.indexOf('@') > 1 ||
-                'Email 格式错误',
             value => value.includes('.') || 'Email 应包含“.”字符',
             value =>
                 value.indexOf('.') <= value.length - 3 ||
@@ -221,7 +218,7 @@ export default {
               // 用ES6箭头函数，箭头方法可以和父方法共享变量
               // 在请求axios外面定义一下 var that=this
               this.resback = response;
-              alert("注册成功！欢迎同学" + this.name);
+              alert("注册成功！欢迎" + this.name);
               localStorage.setItem("userid", this.account);
               localStorage.setItem("username", this.name);
               localStorage.setItem("isLogin", 'true');
@@ -229,29 +226,58 @@ export default {
             .catch(function (err) {
               alert("网络问题，请稍后重试，错误代码：" + err.data.code);
             })
-      }else{
-        axios({
-          url: "http://127.0.0.1:9090/teacher/register",
-          method: 'post',
-          params: {
-            id: this.account,
-            passwd: this.passwd,
-          }
-        })
-            //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
-            .then((response) => {
-              // 用ES6箭头函数，箭头方法可以和父方法共享变量
-              // 在请求axios外面定义一下 var that=this
-              this.resback = response;
-              alert("注册成功！欢迎老师" + this.name);
-              localStorage.setItem("userid", this.account);
-              localStorage.setItem("username", this.name);
-              localStorage.setItem("isLogin", 'true');
+      }else if (this.identity === '教师'){
+          axios({
+              url: "http://127.0.0.1:9090/teacher/register",
+              method: 'post',
+              params: {
+                  id: this.account,
+                  name: this.name,
+                  passwd: this.password,
+                  classid: this.sclass,
+              }
+          })
+              //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+              .then((response) => {
+                  // 用ES6箭头函数，箭头方法可以和父方法共享变量
+                  // 在请求axios外面定义一下 var that=this
+                  this.resback = response;
+                  alert("注册成功！欢迎老师" + this.name);
+                  localStorage.setItem("userid", this.account);
+                  localStorage.setItem("username", this.name);
+                  localStorage.setItem("isLogin", 'true');
+              })
+              .catch(function (err) {
+                  alert("网络问题，请稍后重试，错误代码：" + err.data.code);
+              })
+      } else if (this.identity === '管理用户'){
+            axios({
+                url: "http://127.0.0.1:9090/admin/register",
+                method: 'post',
+                params: {
+                    id: this.account,
+                    name: this.name,
+                    passwd: this.password,
+                    classid: this.sclass,
+                }
             })
-            .catch(function (err) {
-              alert("网络问题，请稍后重试，错误代码：" + err.data.code);
-            })
+                //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+                .then((response) => {
+                    // 用ES6箭头函数，箭头方法可以和父方法共享变量
+                    // 在请求axios外面定义一下 var that=this
+                    this.resback = response;
+                    alert("注册成功！欢迎老师" + this.name);
+                    localStorage.setItem("userid", this.account);
+                    localStorage.setItem("username", this.name);
+                    localStorage.setItem("isLogin", 'true');
+                })
+                .catch(function (err) {
+                    alert("网络问题，请稍后重试，错误代码：" + err.data.code);
+                })
+        }else{
+          alert("请填入正确的身份");
       }
+
     }
   },
 
