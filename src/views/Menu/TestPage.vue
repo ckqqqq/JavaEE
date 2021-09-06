@@ -1,43 +1,39 @@
+<!--注意看遍历对象数组的语法-->
 <template>
-    <div>
-        <v-data-table
-                :headers="headers"
-                :items="desserts"
-                item-key="name"
-                class="elevation-1"
-                :search="search"
-                :custom-filter="filterOnlyCapsText"
+  <v-container fluid>
+    <v-row>
+      <v-col cols="12">
+        <v-combobox
+          v-model="select"
+          :items="getName(desserts)"
+
+          label="I use a scoped slot"
+          multiple
+          chips
         >
-            <template v-slot:top>
-                <v-text-field
-                        v-model="search"
-                        label="Search (UPPER CASE ONLY)"
-                        class="mx-4"
-                ></v-text-field>
-            </template>
-            <template v-slot:body.append>
-                <tr>
-                    <td></td>
-                    <td>
-                        <v-text-field
-                                v-model="calories"
-                                type="number"
-                                label="Less than"
-                        ></v-text-field>
-                    </td>
-                    <td colspan="4"></td>
-                </tr>
-            </template>
-        </v-data-table>
-    </div>
+          
+        </v-combobox>
+      </v-col>
+     
+    </v-row>
+  </v-container>
 </template>
 <script>
-    export default {
-        data () {
-            return {
-                search: '',
-                calories: '',
-                desserts: [
+  export default {
+    data () {
+      return {
+          select: [
+              '北大'],
+        items: [
+          'Programming',
+          'Design',
+          'Vue',
+		  'Vuetify',
+		  '北京',
+		  '北大',
+		],
+
+		desserts: [
                     {
                         name: 'Frozen Yogurt',
                         calories: 159,
@@ -119,40 +115,18 @@
                         iron: '6%',
                     },
                 ],
-            }
-        },
-        computed: {
-            headers () {
-                return [
-                    {
-                        text: 'Dessert (100g serving)',
-                        align: 'start',
-                        sortable: false,
-                        value: 'name',
-                    },
-                    {
-                        text: 'Calories',
-                        value: 'calories',
-                        filter: value => {
-                            if (!this.calories) return true
+      }
 
-                            return value < parseInt(this.calories)
-                        },
-                    },
-                    { text: 'Fat (g)', value: 'fat' },
-                    { text: 'Carbs (g)', value: 'carbs' },
-                    { text: 'Protein (g)', value: 'protein' },
-                    { text: 'Iron (%)', value: 'iron' },
-                ]
-            },
-        },
-        methods: {
-            filterOnlyCapsText (value, search, item) {
-                return value != null &&
-                    search != null &&
-                    typeof value === 'string' &&
-                    value.toString().toLocaleUpperCase().indexOf(search) !== -1
-            },
-        },
-    }
+	},
+	methods:{
+		getName(ObjList){
+			var itemList=new Array("外")
+			for (var i=0;i<ObjList.length;i++){
+                itemList.push(ObjList[i]['name'])
+                console.log(ObjList[i]['name'])
+            }
+            return itemList
+		}
+	}
+  }
 </script>
