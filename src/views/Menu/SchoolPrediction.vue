@@ -81,8 +81,16 @@
           </v-container>
         </v-form>
       </v-card>
-
+                    <v-row justify="center">
+                        <v-btn class="d-flex align-center"
+                               color="rgba(0, 0, 0, .1)"
+                               height="50"
+                               width="200"
+                              >立即估分
+                        </v-btn>
+                    </v-row>
     </v-row>
+
                 <v-text-field
                         v-model="search"
                         label="参考界面  "
