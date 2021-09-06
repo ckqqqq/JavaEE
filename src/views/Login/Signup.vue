@@ -236,6 +236,7 @@ export default {
                   name: this.name,
                   password: this.password,
                   classid: this.sclass,
+
               }
           })
               //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
