@@ -64,12 +64,12 @@
 <script>
 import EmployeesTable from '../components/test'
 import EventTimeline from '../components/EventTimeline'
-import SalesGraph from '../components/SalesGraph'
+import SalesGraph from '../components/SubjectCard'
 import StatisticCard from '../components/StatisticCard'
 
 import employeesData from '../data/employees.json'
 import timelineData from '../data/timeline.json'
-import salesData from '../data/sales.json'
+import salesData from '../data/SubjectData.json'
 import statisticsData from '../data/statistics.json'
 
 export default {

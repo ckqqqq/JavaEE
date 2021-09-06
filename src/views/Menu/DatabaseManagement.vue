@@ -10,7 +10,6 @@
                 <v-text-field label="输入测试url " v-model="test_url" prepend-icon="mdi-account-circle"/>
                 <v-text-field label="var1 " v-model="test_var1" prepend-icon="mdi-account-circle"/>
                 <v-text-field label="var2 " v-model="test_var2" prepend-icon="mdi-account-circle"/>
-
                 <span>本班一本率 （后端传，有时间放个图）</span>
             </v-col>
         </v-row>
@@ -197,9 +196,7 @@
         <v-snackbar
                 v-model="snack"
                 :timeout="3000"
-                :color="snackColor"
         >
-            {{ snackText }}
 
             <template v-slot:action="{ attrs }">
                 <v-btn

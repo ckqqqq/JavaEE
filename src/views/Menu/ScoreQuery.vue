@@ -98,6 +98,7 @@
         <v-toolbar
             color="green"
             dark
+
         >
           <v-app-bar-nav-icon></v-app-bar-nav-icon>
           <v-toolbar-title>院校风采展示</v-toolbar-title>
@@ -127,7 +128,10 @@
                     <v-icon>mdi-heart</v-icon>
                   </v-btn>
 
-                  <v-btn icon>
+                  <v-btn
+                          link
+                          @click="ExternalLink(SchoolLink)"
+                          icon >
                     <v-icon>mdi-bookmark</v-icon>
                   </v-btn>
 
@@ -228,6 +232,7 @@ export default {
   data() {
     return {
       //鱼骨图表格
+        SchoolLink:"https://www.baidu.com",
       timeline: [
         {
           "color": "red lighten-2",
@@ -293,6 +298,11 @@ export default {
         { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
         { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
       ],
+        methods :{
+            ExternalLink(link){
+                window.location.href = link;
+            }
+        }
     }
   },
 }

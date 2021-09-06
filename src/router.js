@@ -42,7 +42,7 @@ const routes= [
         {
           path:'TestPage',
           component:()=>import('@/views/Menu/TestPage')
-        }
+        },
       ]
     },
     {
@@ -71,6 +71,7 @@ const routes= [
       name: 'dashboard',
       component: () => import('./views/Dashboard')
     },
+    
 ]
 const router = new VueRouter({
   routes
