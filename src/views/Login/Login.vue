@@ -136,9 +136,9 @@ export default {
         url = 'http://127.0.0.1:9090/student/login';
       } else if (that.identity == '教师') {
         url = 'http://127.0.0.1:9090/teacher/login';
-      } else {
+      } else if(that.identity == '管理用户'){
         //超级用户，等待后端接口
-        url = 'http://127.0.0.1:9090/student/login';
+        url = 'http://127.0.0.1:9090/admin/login';
       }
       // axios.post("http://127.0.0.1:9090/student/login",{id:'300',password:'ming'})
       axios({
