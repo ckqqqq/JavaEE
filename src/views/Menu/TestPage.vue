@@ -37,7 +37,7 @@
 
 
 <!--    表格部分数据-->
-    <v-row>
+    <v-row v-show="false">
       <v-col>
         <v-data-table
             :headers="headers"
@@ -208,22 +208,6 @@
         </v-data-table>
       </v-col>
     </v-row>
-    <!--        -->
-    <v-snackbar
-        v-model="snack"
-        :timeout="3000"
-    >
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-            v-bind="attrs"
-            text
-            @click="snack = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
     <!--          -->
 
   </v-container>
@@ -261,6 +245,8 @@ export default {
       'Creative Writing',
     ],
 
+
+    selectPage:'',
     choosedTitle:'学生信息管理',
 
     //账号<20 8<=密码<20
