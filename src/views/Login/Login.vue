@@ -145,8 +145,8 @@ export default {
         url: url,
         method: 'post',
         params: {
-          id: that.account,
-          passwd: tmp
+          id: 1112,
+          passwd: 'dd'
         }
       })
           .then(function (response) {
