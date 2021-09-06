@@ -69,13 +69,13 @@
                   cols="12"
                   md="4"
               >
-                <v-text-field
+                <v-combobox
                     v-model="select[2]"
                     :counter="32"
                     :items="getName(desserts)"
                     label="志愿C"
                     required
-                ></v-text-field>
+                ></v-combobox>
               </v-col>
             </v-row>
           </v-container>

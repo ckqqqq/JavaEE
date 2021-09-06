@@ -8,6 +8,7 @@
           :key="item.header"
           v-text="item.header"
       >
+        你好sdfsdfsd无啊
       </v-subheader>
       <v-divider
           v-else-if="item.divider"
@@ -19,24 +20,20 @@
           :key="item.title"
       >
 
-<!--        <v-card>-->
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <v-avatar>
           <v-img
               :src="item.pic"
-              min-height="140"
-              min-width="140"
+              min-height="75"
+              min-width="75"
           >
           </v-img>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </v-avatar>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
         <v-list-item-content>
-<!--        <v-list>-->
-
           <v-col>
             &nbsp;&nbsp;
             <v-list-item-title v-html="item.title"></v-list-item-title>
@@ -45,26 +42,25 @@
           </v-col>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          <v-row style="margin-top: 2vh;width: 100%">
+<!--          <v-row style="margin-top: 2vh;width: 100%">-->
+            <v-row>
             <v-col >
               <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.officialWebsite)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      学校官网      &nbsp;&nbsp;&nbsp;       </v-btn>
             </v-col>
             <v-col >
-              <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.fractionalLine)">分数线</v-btn>
+              <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.fractionalLine)">历年提档线及各专业分数线</v-btn>
             </v-col>
             <v-col >
               <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.universityForum)">高校论坛</v-btn>
             </v-col>
             <v-col >
-              <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.zhihu)">知乎链接</v-btn>
+              <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.zhihu)">在该校读书是一种怎样的体验--知乎</v-btn>
             </v-col>
-          </v-row>
-          <v-divider></v-divider>
+                </v-row>
+<!--          </v-row>-->
 
         </v-list-item-content>
-<!--        </v-list>-->
 
-<!--        </v-card>-->
       </v-list-item>
     </template>
   </v-list>
@@ -92,7 +88,7 @@ export default {
       {
         pic: 'https://tse1-mm.cn.bing.net/th/id/R-C.4b43eae59b6593d567772d944cd0f2b8?rik=yGGWqRDy2Do83A&riu=http%3a%2f%2fpic18.nipic.com%2f20111220%2f9114815_223214639177_2.jpg&ehk=UBdZOSi91xUXBeqT5avuf01D01PxTpVw%2fz%2f13d3AyVQ%3d&risl=&pid=ImgRaw&r=0',
         title: '<span class="headline  black--text font-weight-bold text--lighten-1 font-weigh">清华大学</span>',
-        subtitle: '北京/理工类/985/211/双一流',
+        subtitle: '北京/理工类/211/双一流',
         officialWebsite:'https://www.tsinghua.edu.cn/',
         fractionalLine:'https://gkcx.eol.cn/school/140?fromcoop=bdkp',
         universityForum:'http://www.thubbs.cn/',
