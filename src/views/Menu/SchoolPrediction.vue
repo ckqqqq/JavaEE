@@ -1,5 +1,19 @@
 <template>
     <div>
+        <v-row>
+            <v-col cols="12">
+                <v-combobox
+                        v-model="select"
+                        :items="getName(desserts)"
+                        label="I use a scoped slot"
+                        multiple
+                        chips
+                >
+
+                </v-combobox>
+            </v-col>
+
+        </v-row>
         <v-data-table
                 :headers="headers"
                 :items="desserts"
@@ -8,13 +22,74 @@
                 :search="search"
                 :custom-filter="filterOnlyCapsText"
         >
+        <!-- //////////////////// -->
             <template v-slot:top>
+                <v-row>
+      <v-card tile style="width: 100%">
+
+        <!--        标题头-->
+        <v-card-title>志愿填报预测</v-card-title>
+        <v-card-subtitle>请在此输入您的A、B、C三个志愿，我们将为您展示填报学校的录取情况。</v-card-subtitle>
+        <v-divider></v-divider>
+        <br>
+
+        <!--        表单选择-->
+        <v-form v-model="valid">
+          <v-container>
+            <v-row>
+              <v-col
+                  cols="12"
+                  md="4"
+              >
+
+                <v-combobox
+                    v-model="select[0]"
+                    :counter="32"
+                    :items="getName(desserts)"
+                    label="志愿A"
+                    required
+                    chips
+                ></v-combobox>
+              </v-col>
+
+              <v-col
+                  cols="12"
+                  md="4"
+              >
+                <v-combobox
+                    v-model="select[1]"
+                    :counter="32"
+                    :items="getName(desserts)"
+                    label="志愿B"
+                    required
+                ></v-combobox>
+              </v-col>
+
+              <v-col
+                  cols="12"
+                  md="4"
+              >
+                <v-text-field
+                    v-model="select[2]"
+                    :counter="32"
+                    :items="getName(desserts)"
+                    label="志愿C"
+                    required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
+      </v-card>
+
+    </v-row>
                 <v-text-field
                         v-model="search"
-                        label="Search (UPPER CASE ONLY)"
+                        label="参考界面  "
                         class="mx-4"
                 ></v-text-field>
             </template>
+            <!-- /////////////// -->
             <template v-slot:body.append>
                 <tr>
                     <td></td>
@@ -29,12 +104,16 @@
                 </tr>
             </template>
         </v-data-table>
+        <v-divider> </v-divider>
+
     </div>
 </template>
 <script>
     export default {
         data () {
             return {
+                select: [
+                    '北大'],
                 search: '',
                 calories: '',
                 desserts: [
@@ -147,12 +226,25 @@
             },
         },
         methods: {
+            ChangeSelect(select,index,value){
+                select[index]=value
+                return select;
+            },
             filterOnlyCapsText (value, search, item) {
                 return value != null &&
                     search != null &&
                     typeof value === 'string' &&
                     value.toString().toLocaleUpperCase().indexOf(search) !== -1
             },
+            getName(ObjList){
+                var itemList=new Array("外")
+                for (var i=0;i<ObjList.length;i++){
+                    itemList.push(ObjList[i]['name'])
+                    console.log(ObjList[i]['name'])
+                }
+                return itemList
+            },
         },
+
     }
 </script>
