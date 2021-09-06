@@ -131,26 +131,27 @@ export default {
     postLogin: function () {
       var that = this;
       var url = '';
+      var tmp = toString(that.pswd);
 
       if (that.identity == '学生') {
         url = 'http://127.0.0.1:9090/student/login';
       } else if (that.identity == '教师') {
         url = 'http://127.0.0.1:9090/teacher/login';
-      } else if(that.identity == '管理用户'){
+      } else {
         //超级用户，等待后端接口
-        url = 'http://127.0.0.1:9090/admin/login';
+        url = 'http://127.0.0.1:9090/teacher/login';
       }
-      // axios.post("http://127.0.0.1:9090/student/login",{id:'300',password:'ming'})
       axios({
         url: url,
         method: 'post',
         params: {
-          id:"777",
-          password: "777",
+          id: that.account,
+          passwd: tmp
         }
       })
           .then(function (response) {
             console.log(response.data.data["name"])
+            alert("hello");
             if (response.data.msg === "成功") {
               that.resp = response;
               that.isLogin = true;

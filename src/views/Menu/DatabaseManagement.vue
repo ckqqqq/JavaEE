@@ -192,23 +192,23 @@
                 </v-data-table>
             </v-col>
         </v-row>
-<!--        -->
-        <v-snackbar
-                v-model="snack"
-                :timeout="3000"
-        >
+<!--&lt;!&ndash;        &ndash;&gt;-->
+<!--        <v-snackbar-->
+<!--                v-model="snack"-->
+<!--                :timeout="3000"-->
+<!--        >-->
 
-            <template v-slot:action="{ attrs }">
-                <v-btn
-                        v-bind="attrs"
-                        text
-                        @click="snack = false"
-                >
-                    Close
-                </v-btn>
-            </template>
-        </v-snackbar>
-<!--          -->
+<!--            <template v-slot:action="{ attrs }">-->
+<!--                <v-btn-->
+<!--                        v-bind="attrs"-->
+<!--                        text-->
+<!--                        @click="snack = false"-->
+<!--                >-->
+<!--                    Close-->
+<!--                </v-btn>-->
+<!--            </template>-->
+<!--        </v-snackbar>-->
+<!--&lt;!&ndash;          &ndash;&gt;-->
 
     </v-container>
 </template>

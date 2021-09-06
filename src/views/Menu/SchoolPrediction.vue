@@ -112,6 +112,7 @@
     export default {
         data () {
             return {
+              valid:'',
                 select: [
                     '北大'],
                 search: '',
