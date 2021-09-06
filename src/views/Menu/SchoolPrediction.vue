@@ -5,7 +5,6 @@
                 <v-combobox
                         v-model="select"
                         :items="getName(desserts)"
-
                         label="I use a scoped slot"
                         multiple
                         chips
@@ -42,24 +41,28 @@
                   cols="12"
                   md="4"
               >
-                <v-text-field
+
+                <v-combobox
                     v-model="select[0]"
                     :counter="32"
+                    :items="getName(desserts)"
                     label="志愿A"
                     required
-                ></v-text-field>
+                    chips
+                ></v-combobox>
               </v-col>
 
               <v-col
                   cols="12"
                   md="4"
               >
-                <v-text-field
+                <v-combobox
                     v-model="select[1]"
                     :counter="32"
+                    :items="getName(desserts)"
                     label="志愿B"
                     required
-                ></v-text-field>
+                ></v-combobox>
               </v-col>
 
               <v-col
@@ -69,6 +72,7 @@
                 <v-text-field
                     v-model="select[2]"
                     :counter="32"
+                    :items="getName(desserts)"
                     label="志愿C"
                     required
                 ></v-text-field>
@@ -222,6 +226,10 @@
             },
         },
         methods: {
+            ChangeSelect(select,index,value){
+                select[index]=value
+                return select;
+            },
             filterOnlyCapsText (value, search, item) {
                 return value != null &&
                     search != null &&
