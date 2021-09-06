@@ -240,7 +240,6 @@
                 var itemList=new Array("外")
                 for (var i=0;i<ObjList.length;i++){
                     itemList.push(ObjList[i]['name'])
-                    console.log(ObjList[i]['name'])
                 }
                 return itemList
             },

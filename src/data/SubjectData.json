@@ -12,7 +12,7 @@
   {
     "title": "英语",
     "link": "https://www.gaokzx.com/c/202010/46584.html",
-    "color": "#ff8936"
+    "color": "amber"
   },
   {
     "title": "物理",
@@ -42,6 +42,6 @@
   {
     "title": "地理",
     "link": "https://www.gaokzx.com/c/202010/46585.html",
-    "color": "cyan"
+    "color": "green"
   }
 ]
