@@ -202,6 +202,7 @@ export default {
       // } else if (this.identity === '教师') {
       //   url = "http://127.0.0.1:9090/teacher/register"
       // }
+        var str_password=toString(this.password)
       if (this.identity === '学生'){
         axios({
           url: "http://127.0.0.1:9090/student/register",
@@ -209,7 +210,7 @@ export default {
           params: {
             id: this.account,
             name: this.name,
-            passwd: this.password,
+            password: str_password,
             classid: this.sclass,
           }
         })
@@ -233,7 +234,7 @@ export default {
               params: {
                   id: this.account,
                   name: this.name,
-                  passwd: this.password,
+                  password: this.password,
                   classid: this.sclass,
               }
           })

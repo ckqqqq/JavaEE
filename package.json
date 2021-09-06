@@ -29,6 +29,7 @@
     "stylus-loader": "^3.0.1",
     "vue-cli-plugin-vuetify": "^2.0.2",
     "vue-template-compiler": "^2.6.10",
+    "vuelidate": "^0.7.6",
     "vuetify-loader": "^1.2.2"
   },
   "eslintConfig": {

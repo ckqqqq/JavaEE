@@ -146,7 +146,7 @@ export default {
         method: 'post',
         params: {
           id: that.account,
-          password: that.pswd
+          password: toString(that.pswd)
         }
       })
           .then(function (response) {
