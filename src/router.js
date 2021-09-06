@@ -35,13 +35,30 @@ const routes= [
           path:'DatabaseManagement',
           component:()=>import('@/views/Menu/DatabaseManagement')
         },
+
         {
           path:'AccountInformation',
           component:()=>import('@/views/Menu/AccountInformation')
         },
         {
-          path:'TestPage',
-          component:()=>import('@/views/Menu/TestPage')
+          path:'/adminTable',
+          name:'adminTable',
+          component:()=>import('@/dataPackage/adminTable')
+        },
+        {
+          path:'/teacherTable',
+          name:'teacherTable',
+          component:()=>import('@/dataPackage/teacherTable')
+        },
+        {
+          path:'/universityTable',
+          name:'universityTable',
+          component:()=>import('@/dataPackage/universityTable')
+        },
+        {
+          path:'/TestPage',
+          name:"TestPage",
+          component:()=>import('./views/Menu/TestPage')
         },
       ]
     },
@@ -71,7 +88,7 @@ const routes= [
       name: 'dashboard',
       component: () => import('./views/Dashboard')
     },
-    
+
 ]
 const router = new VueRouter({
   routes

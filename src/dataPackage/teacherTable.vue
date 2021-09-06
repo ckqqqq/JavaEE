@@ -1,10 +1,10 @@
 <template>
-  <h1>Hello,student!</h1>
+  <h1>Hello,teacher!</h1>
 </template>
 
 <script>
 export default {
-  name: "StudentTable"
+  name: "teacherTable"
 }
 </script>
 

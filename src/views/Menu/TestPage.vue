@@ -245,7 +245,6 @@ export default {
       'Creative Writing',
     ],
 
-
     selectPage:'',
     choosedTitle:'学生信息管理',
 
