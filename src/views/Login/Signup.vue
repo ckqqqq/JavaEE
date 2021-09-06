@@ -210,7 +210,7 @@ export default {
           params: {
             id: this.account,
             name: this.name,
-            password: str_password,
+            password: this.password,
             classid: this.sclass,
           }
         })
