@@ -38,6 +38,10 @@ const routes= [
         {
           path:'AccountInformation',
           component:()=>import('@/views/Menu/AccountInformation')
+        },
+        {
+          path:'TestPage',
+          component:()=>import('@/views/Menu/TestPage')
         }
       ]
     },

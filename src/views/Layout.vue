@@ -98,6 +98,7 @@
                 {icon:'mdi-school', text:'提前估分',path:'/ScoreEstimation'},
                 {icon:'mdi-library', text:'学校信息',path:'/SchoolInformation'},
                 {icon:'mdi-all-inclusive',text: '更多',path:'/DatabaseManagement'},
+                {icon:'mid-apple', 'text': '测试页面', path:'/TextPage'}
             ],
         })
         },
