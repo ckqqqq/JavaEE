@@ -42,7 +42,7 @@
           </v-col>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          <v-row style="margin-top: 2vh;width: 100%">
+<!--          <v-row style="margin-top: 2vh;width: 100%">-->
             <v-col >
               <v-btn height="50" width="250" link color="primary" @click="ExternalLink(item.officialWebsite)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      学校官网      &nbsp;&nbsp;&nbsp;       </v-btn>
             </v-col>
@@ -55,7 +55,7 @@
             <v-col >
               <v-btn height="50" width="250" link color="primary " @click="ExternalLink(item.zhihu)">在该校读书是一种怎样的体验--知乎</v-btn>
             </v-col>
-          </v-row>
+<!--          </v-row>-->
 
         </v-list-item-content>
 
