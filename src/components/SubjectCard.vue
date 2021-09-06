@@ -16,7 +16,9 @@
                    height="50"
                    width="200"
                    style="alignment: center"
-            >立即估分</v-btn>
+                   @click="ExternalLink(subject.link)"
+
+            >估分</v-btn>
         </v-row>
     </v-card-text>
 
@@ -32,6 +34,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods:{
+      ExternalLink(link){
+          window.location.href = link;
+      }
   }
 }
 </script>

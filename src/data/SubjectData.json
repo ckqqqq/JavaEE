@@ -1,54 +1,63 @@
 [
   {
     "title": "语文",
+    "link": "http://www.gaokao.com/e/20210905/61347082acd3a.shtml",
     "sales": [423, 446, 675, 510, 590, 610, 760, 639],
     "color": "cyan",
     "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
   },
   {
     "title": "数学",
+    "link": "https://max.book118.com/html/2021/0612/5030010102003242.shtm",
     "sales": [325, 123, 273, 573],
     "color": "teal",
     "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
   },
   {
     "title": "英语",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
     "color": "green",
     "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
   },
   {
     "title": "物理",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [423, 446, 675, 510, 590, 610, 760, 639],
     "color": "yellow",
     "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
   },
   {
     "title": "化学",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [325, 123, 273, 573],
     "color": "teal",
     "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
   },
   {
     "title": "生物",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
     "color": "green",
     "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
   },
   {
     "title": "历史",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [423, 446, 675, 510, 590, 610, 760, 639],
     "color": "cyan",
     "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
   },
   {
     "title": "政治",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [325, 123, 273, 573],
     "color": "blue",
     "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
   },
   {
     "title": "地理",
+    "link": "https://www.docin.com/p-2598163956.html",
     "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
     "color": "cyan",
     "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
