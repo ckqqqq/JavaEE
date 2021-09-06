@@ -131,6 +131,7 @@ export default {
     postLogin: function () {
       var that = this;
       var url = '';
+      var tmp = toString(that.pswd);
 
       if (that.identity == '学生') {
         url = 'http://127.0.0.1:9090/student/login';
@@ -138,19 +139,19 @@ export default {
         url = 'http://127.0.0.1:9090/teacher/login';
       } else {
         //超级用户，等待后端接口
-        url = 'http://127.0.0.1:9090/student/login';
+        url = 'http://127.0.0.1:9090/teacher/login';
       }
-      // axios.post("http://127.0.0.1:9090/student/login",{id:'300',password:'ming'})
       axios({
         url: url,
         method: 'post',
         params: {
           id: that.account,
-          password: that.pswd
+          passwd: tmp
         }
       })
           .then(function (response) {
             console.log(response.data.data["name"])
+            alert("hello");
             if (response.data.msg === "成功") {
               that.resp = response;
               that.isLogin = true;

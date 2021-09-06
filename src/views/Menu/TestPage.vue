@@ -37,7 +37,7 @@
 
 
 <!--    表格部分数据-->
-    <v-row v-show="false">
+    <v-row>
       <v-col>
         <v-data-table
             :headers="headers"

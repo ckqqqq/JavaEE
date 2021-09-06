@@ -235,7 +235,9 @@ export default {
           method: 'post',
           params: {
             id: this.account,
-            passwd: this.passwd,
+            passwd: this.password,
+            name: this.name,
+            classid: this.sclass,
           }
         })
             //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
