@@ -62,6 +62,13 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
+                      color="success"
+                      dark
+                      class="mb-2"
+                      style="margin-left: 1vh;margin-right: 1vh"
+                      @click="getStudent"
+                  >刷新</v-btn>
+                  <v-btn
                       color="indigo"
                       dark
                       class="mb-2"
@@ -380,7 +387,7 @@ export default {
         }
       })
           .then(function (response) {
-            alert("" + response.data.msg);
+            alert("更新信息状态" + response.data.msg);
           })
 
     },
@@ -417,7 +424,7 @@ export default {
         }
       })
           .then(function (response) {
-            alert("新增学生用户状态：" + response.data.msg);
+            alert("注册操作状态：" + response.data.msg);
           })
     },
 
@@ -490,7 +497,11 @@ export default {
       } else {
         this.stdData.push(this.editedItem)
       }
-      this.registerStudent(this.editedIndex);
+      if (this.editedIndex === -1) {
+        this.registerStudent(this.editedIndex);
+      }else{
+        this.updateStudent(this.editedIndex);
+      }
       this.close()
     },
   },
