@@ -1,56 +1,47 @@
 [
   {
     "title": "语文",
-    "sales": [423, 446, 675, 510, 590, 610, 760, 639],
-    "color": "cyan",
-    "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
+    "link": "https://www.gaokzx.com/c/202010/46582.html",
+    "color": "pink"
   },
   {
     "title": "数学",
-    "sales": [325, 123, 273, 573],
-    "color": "teal",
-    "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
+    "link": "https://www.gaokzx.com/c/202007/44408.html",
+    "color": "cyan"
   },
   {
     "title": "英语",
-    "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
-    "color": "green",
-    "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
+    "link": "https://www.gaokzx.com/c/202010/46584.html",
+    "color": "amber"
   },
   {
     "title": "物理",
-    "sales": [423, 446, 675, 510, 590, 610, 760, 639],
-    "color": "yellow",
-    "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
+    "link": "https://www.gaokzx.com/c/202007/44552.html",
+    "color": "#ae7000"
   },
   {
     "title": "化学",
-    "sales": [325, 123, 273, 573],
-    "color": "teal",
-    "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
+    "link": "https://www.gaokzx.com/c/202008/45312.html",
+    "color": "#c91f37"
   },
   {
     "title": "生物",
-    "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
-    "color": "green",
-    "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
+    "link": "https://www.gaokzx.com/c/202008/45754.html",
+    "color": "#56004f"
   },
   {
     "title": "历史",
-    "sales": [423, 446, 675, 510, 590, 610, 760, 639],
-    "color": "cyan",
-    "labels": ["6AM", "8AM", "9AM", "10AM", "12PM", "2PM", "4PM", "6PM"]
+    "link": "https://www.gaokzx.com/c/202010/46605.html",
+    "color": "#3b2e7e"
   },
   {
     "title": "政治",
-    "sales": [325, 123, 273, 573],
-    "color": "blue",
-    "labels": ["Week 1", "Week 2", "Week 3", "Week 4"]
+    "link": "https://www.gaokzx.com/c/202009/45918.html",
+    "color": "#0000cd"
   },
   {
     "title": "地理",
-    "sales": [746, 415, 943, 1372, 983, 651, 837, 639],
-    "color": "cyan",
-    "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
+    "link": "https://www.gaokzx.com/c/202010/46585.html",
+    "color": "green"
   }
 ]
